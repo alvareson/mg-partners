@@ -7,7 +7,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "deploy": "nuxi generate && netlify deploy --prod --site mindall.co -d .output/public"
+    "deploy": "nuxi generate && netlify deploy --prod -d .output/public"
   },
   "devDependencies": {
     "@nuxtjs/i18n": "^8.0.0",
