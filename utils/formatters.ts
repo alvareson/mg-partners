@@ -53,9 +53,6 @@ export const handleAddress = (location: PropertyLocation) => {
 }
 
 export const handlePrice = (pricing: PropertyPricing, dealType: string) => {
-  console.log(pricing);
-  console.log(dealType);
-  
   if (dealType === DealTypesEnum.rent) {
     return `${formatPrice(pricing.price.rentPerYear)} / year`
   } else {

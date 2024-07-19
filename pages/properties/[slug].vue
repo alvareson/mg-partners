@@ -1,7 +1,7 @@
 <template>
   <div class="property" v-if="property">
     <div class="property__main">
-      <div class="property__top container">
+      <div class="property__top container-no-padding">
         <AppLink class="property__back" :to="{ path: '/' }">
           <Icon name="arrow-left" />
           Back to search
@@ -12,16 +12,14 @@
               <Icon name="arrow-left" />
               Back to search
             </AppLink>
-            <div v-if="property?.general?.dealType" class="property__type">For {{ property?.general?.dealType }}</div>
-            <h1 v-if="property?.general?.category && property?.location" class="property__title text-h2">
-              <span class="property__title-1">{{ property?.general?.category }} in</span>
-              <!-- <span class="property__title-2">{{ handleDisplayNeighborhood(property?.location) }}</span> -->
-              <span class="property__title-2">Al Shaikh Al Halud</span>
+            <h1 v-if="property?.general?.category && property?.location && property?.general?.dealType" class="property__title text-h2">
+              <span class="property__title-1">{{ property?.general?.category.toUpperCase() }} IN</span>
+              <span class="property__title-2">{{ handleDisplayNeighborhood(property?.location).toUpperCase() }} FOR {{ property?.general?.dealType.toUpperCase() }}</span>
             </h1>
             <h2>{{ formatterPropertyInfo(property.description, "title") }}</h2>
           </header>
           <div class="property__data">
-            <div v-if="property.pricing && property.general.dealType" class="property__price text-h2">
+            <div v-if="property.pricing && property.general.dealType" class="property__price">
               {{ handlePrice(property.pricing, property.general.dealType) }}
             </div>
             <ul v-if="property.specific" class="property__data-items">
@@ -49,6 +47,7 @@
           <div v-if="property?.general?.dealType" class="property__type">For {{ property?.general?.dealType }}</div>
         </div>
       </div>
+
       <div class="property__bottom container">
         <div class="property__content">
           <div v-if="property.description?.generic && property.description?.generic[0]" class="property__description">
@@ -84,7 +83,7 @@
             <img :src="localMap" width="740" height="320" alt="" />
           </div>
         </div>
-        <ContactAgent class="property__contact-agent" :broker="broker" :reference="property.reference" />
+        <!-- <ContactAgent class="property__contact-agent" :broker="broker" :reference="property.reference" /> -->
       </div>
     </div>
     <!-- <AboutNeighborhood v-if="neighborhood" :neighborhood="neighborhood" />
@@ -123,46 +122,6 @@ const showOverlay = ref(false)
 //   if (property.value?.location) neighborhood.value = await getNeighborhood(property.value?.location, locale.value)
 //   if (property.value?.broker.id) broker.value = await getBroker(property.value?.broker.id)
 // })
-
-const property = ref({
-  id: 1,
-  description: {
-    title: "Beautiful Family Home",
-    text: "<p>This is a beautiful family home located in a quiet neighborhood.</p>",
-    generic: ["This property offers spacious living areas and modern amenities."]
-  },
-  pricing: {
-    price: {
-      price: 500000
-    }
-  },
-  general: {
-    category: "Apartment",
-    dealType: "Sale"
-  },
-  specific: {
-    bedrooms: 4,
-    bathrooms: 3,
-    areas: {
-      habitable: 2500
-    }
-  },
-  media: {
-    pictures: [
-      { file: { url: "/img/apartments/flat1.jpeg" } },
-      { file: { url: "/img/apartments/flat2.jpeg" } }
-    ],
-    videoTour: [
-      { url: "https://www.youtube.com/embed/dQw4w9WgXcQ" }
-    ]
-  },
-  location: {
-    address: "123 Main Street, Anytown, USA",
-    lat: 40.7128,
-    lng: -74.0060
-  },
-  reference: "PROP12345"
-})
 
 const broker = ref({
   name: "John Doe",
@@ -235,6 +194,347 @@ const youtubeEmbedUrl = (url: string) => {
   }
   return `https://www.youtube.com/embed/${videoId}`
 }
+
+
+
+const property = ref({
+    id: '66962d5515df0ffb3502c2e2',
+    amenities: [
+      'parking', 'elevator', 'pets', 'conciergeService', 'maidService', 'securityService',
+      'lobbyBuilding', 'studyRoom', 'balcony', 'walkInCloset', 'childrensPlayArena',
+      'garden', 'barbecueArea', 'sauna', 'sharedGym', 'privateGym', 'sharedPool', 'privatePool',
+      'spa', 'viewLandmark', 'nearbyHospitals', 'nearbyPubTransport', 'nearbySchools',
+      'nearbyShoppingMalls'
+    ],
+    contacts: {
+      intermediary: { id: null },
+      notary: { id: null },
+      propertyManager: { id: 'a597d13e-06e4-4add-b163-c9ffd3da6a6c' },
+      owner: { id: null }
+    },
+    createdAt: '2024-07-16T08:20:37.170000Z',
+    description: {
+      generic: [
+        {
+          language: 'english',
+          title: 'PREMIUM AND SPACIOUS | FURNISHED | HIGH FLOOR',
+          text: 
+            '<p>Horizonvista Real Estate proudly presents this amazing 2-bedroom apartment for rent in Business Bay. Apartments in DAMAC Maison Bay’s Edge offer a world of luxurious amenities and services along with breathtaking views. T</p><p><br></p><p>The tower consists of 24 floors above ground.  The property offers stunning balcony views and is easily accessible on Sheikh Zayed Road and Business Bay Metro. </p><p>The apartment benefits from a large living room/bedroom area allowing for an airy feel and plenty of natural light directly from the sun—the best Property to buy in Dubai. </p><p><strong>Property Details:</strong> </p><p>- Fully Furnished </p><p>- BUA: 1254.53 sqft</p><p> - 2 Bedroom</p><p> - 3 Bathroom </p><p>- Living / Dining Area </p><p>- Fully Fitted Kitchen </p><p>- Open Plan</p><p> - Built-in Wardrobes</p><p> - Balcony </p><p> <strong>Facilities &amp; Amenities:</strong></p><p> - Covered Parking</p><p> - Near to Public Transport</p><p> - Swimming Pool </p><p>- Kids Play Area</p><p> - Kids Pool </p><p>- Gymnasium </p><p>- Sauna and Steam Rooms </p><p>- Jacuzzi</p><p> - 24-hour Security</p><p> - CCTV Cameras </p><p>- 24-hour Concierge Services </p><p>- Valet Parking </p><p><br></p><p><strong>For more details about the property or to schedule a viewing contact our dedicated team at HorizonVista Real Estate.</strong></p>'
+        }
+      ],
+      website: null,
+      brochure: null,
+      portal: null
+    },
+    general: {
+      dealType: 'rent',
+      completionStatus: null,
+      rentalFrequency: 'yearly',
+      market: null,
+      cheques: 2,
+      category: 'apartment',
+      availabilityDate: '2024-07-31T00:00:00+00:00',
+      mandate: {
+        type: 'nonExclusive',
+        startAt: '2024-07-31T00:00:00+00:00',
+        endAt: '2024-07-31T00:00:00+00:00',
+        renewalAt: '2024-07-31T00:00:00+00:00',
+        rera: '7116786392',
+        dtcm: null
+      },
+      offMarket: false
+    },
+    location: {
+      osmId: null,
+      osmType: null,
+      country: 'United Arab Emirates',
+      countryCode: 'AE',
+      district: null,
+      address1: null,
+      address2: null,
+      zipCode: null,
+      pf: {
+        city: 'Dubai',
+        community: 'Business Bay',
+        subCommunity: 'Bay\'s Edge',
+        buildingName: null
+      },
+      bayut: {
+        city: 'Dubai',
+        community: 'Business Bay',
+        subCommunity: 'DAMAC Maison Bay\'s Edge',
+        buildingName: null
+      },
+      type: 'Point',
+      coordinates: [ 55.27151019999999, 25.1815668 ],
+      lng: 55.27151019999999,
+      lat: 25.1815668
+    },
+    media: {
+      documents: [
+        {
+          file: {
+            name: '38d36de1-fbfe-4f01-a7df-e7bc36f9397a.jpeg',
+            url: 
+              'https://s3.crm.mindall.co/crm/properties/66962d5515df0ffb3502c2e2/document/1ff023ae-d030-451f-a256-77ab87b792ac.jpeg',
+            type: 'document'
+          }
+        },
+        {
+          file: {
+            name: 'a77457f9-a7ae-4fda-a8a1-0144120a933c.jpeg',
+            url: 
+              'https://s3.crm.mindall.co/crm/properties/66962d5515df0ffb3502c2e2/document/0f813a72-ba17-456d-adaa-c08c58d6d6e8.jpeg',
+            type: 'document'
+          }
+        },
+        {
+          file: {
+            name: 'BAYS EDGE NOC.pdf',
+            url: 
+              'https://s3.crm.mindall.co/crm/properties/66962d5515df0ffb3502c2e2/document/3deb04ce-d8b2-4523-85e7-394dbbb02431.pdf',
+            type: 'document'
+          }
+        },
+        {
+          file: {
+            name: 'BE 2201.pdf',
+            url: 
+              'https://s3.crm.mindall.co/crm/properties/66962d5515df0ffb3502c2e2/document/e23d4023-d947-40d4-8274-a0343a6ed796.pdf',
+            type: 'document'
+          }
+        }
+      ],
+      pictures: [
+        {
+          file: {
+            name: 'WhatsApp Image 2024-04-06 at 10.03.05 AM (11).jpeg',
+            url: 
+              'https://s3.crm.mindall.co/crm/properties/66962d5515df0ffb3502c2e2/photo/04bfb845-6746-43b2-9073-957fb57e4587.jpeg',
+            type: 'photo'
+          },
+          onBroch: true,
+          onPortal: true,
+          hasWatermark: true
+        },
+        {
+          file: {
+            name: 'WhatsApp Image 2024-04-06 at 10.03.05 AM (1).jpeg',
+            url: 
+              'https://s3.crm.mindall.co/crm/properties/66962d5515df0ffb3502c2e2/photo/754b4394-2053-42f1-a40e-5ddf55497946.jpeg',
+            type: 'photo'
+          },
+          onBroch: true,
+          onPortal: true,
+          hasWatermark: true
+        },
+        {
+          file: {
+            name: 'WhatsApp Image 2024-04-06 at 10.03.05 AM (4).jpeg',
+            url: 
+              'https://s3.crm.mindall.co/crm/properties/66962d5515df0ffb3502c2e2/photo/48402104-c787-470f-b33d-4766961fb828.jpeg',
+            type: 'photo'
+          },
+          onBroch: true,
+          onPortal: true,
+          hasWatermark: true
+        },
+        {
+          file: {
+            name: 'WhatsApp Image 2024-04-06 at 10.03.05 AM (2).jpeg',
+            url: 
+              'https://s3.crm.mindall.co/crm/properties/66962d5515df0ffb3502c2e2/photo/85de91bc-b891-40d2-b6cc-2f1a95603c95.jpeg',
+            type: 'photo'
+          },
+          onBroch: true,
+          onPortal: true,
+          hasWatermark: true
+        },
+        {
+          file: {
+            name: 'WhatsApp Image 2024-04-06 at 10.03.05 AM (6).jpeg',
+            url: 
+              'https://s3.crm.mindall.co/crm/properties/66962d5515df0ffb3502c2e2/photo/3b5a81ed-93c0-4a99-a091-d83cabafcd7f.jpeg',
+            type: 'photo'
+          },
+          onBroch: true,
+          onPortal: true,
+          hasWatermark: true
+        },
+        {
+          file: {
+            name: 'WhatsApp Image 2024-04-06 at 10.03.05 AM (9).jpeg',
+            url: 
+              'https://s3.crm.mindall.co/crm/properties/66962d5515df0ffb3502c2e2/photo/c6b3c85e-308e-4155-ae15-44ea58eebd08.jpeg',
+            type: 'photo'
+          },
+          onBroch: true,
+          onPortal: true,
+          hasWatermark: true
+        },
+        {
+          file: {
+            name: 'WhatsApp Image 2024-04-06 at 10.03.06 AM (2).jpeg',
+            url: 
+              'https://s3.crm.mindall.co/crm/properties/66962d5515df0ffb3502c2e2/photo/8624ffe1-23bf-437f-bed4-cec76929a752.jpeg',
+            type: 'photo'
+          },
+          onBroch: true,
+          onPortal: true,
+          hasWatermark: true
+        },
+        {
+          file: {
+            name: 'WhatsApp Image 2024-04-06 at 10.03.05 AM (7).jpeg',
+            url: 
+              'https://s3.crm.mindall.co/crm/properties/66962d5515df0ffb3502c2e2/photo/7a654b5c-6fb4-4a7f-a801-625af640dd3f.jpeg',
+            type: 'photo'
+          },
+          onBroch: true,
+          onPortal: true,
+          hasWatermark: true
+        },
+        {
+          file: {
+            name: 'WhatsApp Image 2024-04-06 at 10.03.05 AM (8).jpeg',
+            url: 
+              'https://s3.crm.mindall.co/crm/properties/66962d5515df0ffb3502c2e2/photo/1c608bf9-c82a-4197-a9c8-8b76557e4987.jpeg',
+            type: 'photo'
+          },
+          onBroch: true,
+          onPortal: true,
+          hasWatermark: true
+        },
+        {
+          file: {
+            name: 'WhatsApp Image 2024-04-06 at 10.03.05 AM (10).jpeg',
+            url: 
+              'https://s3.crm.mindall.co/crm/properties/66962d5515df0ffb3502c2e2/photo/ead194b2-4f69-45f1-b53c-154efd838ed1.jpeg',
+            type: 'photo'
+          },
+          onBroch: true,
+          onPortal: true,
+          hasWatermark: true
+        },
+        {
+          file: {
+            name: 'WhatsApp Image 2024-04-06 at 10.03.05 AM (12).jpeg',
+            url: 
+              'https://s3.crm.mindall.co/crm/properties/66962d5515df0ffb3502c2e2/photo/250b86f3-4732-43b4-add8-47aecb82121f.jpeg',
+            type: 'photo'
+          },
+          onBroch: true,
+          onPortal: true,
+          hasWatermark: true
+        },
+        {
+          file: {
+            name: 'WhatsApp Image 2024-04-06 at 10.03.06 AM (1).jpeg',
+            url: 
+              'https://s3.crm.mindall.co/crm/properties/66962d5515df0ffb3502c2e2/photo/33b03205-2f4c-4671-9ffc-e5f762702b89.jpeg',
+            type: 'photo'
+          },
+          onBroch: true,
+          onPortal: true,
+          hasWatermark: true
+        },
+        {
+          file: {
+            name: 'WhatsApp Image 2024-04-06 at 10.03.06 AM (5).jpeg',
+            url: 
+              'https://s3.crm.mindall.co/crm/properties/66962d5515df0ffb3502c2e2/photo/ff59dca9-c02d-42f1-bf37-91911124feaa.jpeg',
+            type: 'photo'
+          },
+          onBroch: true,
+          onPortal: true,
+          hasWatermark: true
+        },
+        {
+          file: {
+            name: 'WhatsApp Image 2024-04-06 at 10.03.06 AM (6).jpeg',
+            url: 
+              'https://s3.crm.mindall.co/crm/properties/66962d5515df0ffb3502c2e2/photo/4c7d2bdd-1126-426d-a0d8-db90b4b43bab.jpeg',
+            type: 'photo'
+          },
+          onBroch: true,
+          onPortal: true,
+          hasWatermark: true
+        },
+        {
+          file: {
+            name: 'WhatsApp Image 2024-04-06 at 10.03.06 AM.jpeg',
+            url: 
+              'https://s3.crm.mindall.co/crm/properties/66962d5515df0ffb3502c2e2/photo/81937cc7-b211-458c-b508-eb3fe67f8847.jpeg',
+            type: 'photo'
+          },
+          onBroch: true,
+          onPortal: true,
+          hasWatermark: true
+        },
+        {
+          file: {
+            name: 'WhatsApp Image 2024-04-06 at 10.03.07 AM (1).jpeg',
+            url: 
+              'https://s3.crm.mindall.co/crm/properties/66962d5515df0ffb3502c2e2/photo/198e2134-66be-4c5b-81fa-b563915e0379.jpeg',
+            type: 'photo'
+          },
+          onBroch: true,
+          onPortal: true,
+          hasWatermark: true
+        }
+      ]
+    },
+    pricing: {
+      price: {
+        price: 0,
+        priceM2: null,
+        rentPerDay: null,
+        rentPerWeek: null,
+        rentPerMonth: null,
+        rentPerYear: 160000
+      },
+      charges: {
+        annualCharges: null,
+        monthlyCharges: null,
+        chargesIncluded: false
+      }
+    },
+    publication: { website: true, bayut: true, dubizzle: true, pf: true },
+    reference: 'HV-L1077',
+    soldAt: null,
+    specific: {
+      floor: 22,
+      buildingFloors: null,
+      rooms: 2,
+      bathrooms: 3,
+      bedrooms: 2,
+      parking: { numberOfParkingSlots: 1 },
+      areas: { habitable: 1254.53, usable: 1254.53, weighted: 1254.53 },
+      unitNumber: '2201',
+      constructionYear: null,
+      renovation: null,
+      furnishing: 'yes',
+      studio: false
+    },
+    status: 'active',
+    updatedAt: '2024-07-19T06:43:49.370000Z',
+    broker: {
+      id: '9c3e9a1a-452b-4265-a8c7-be9fcd076a0c',
+      organization_id: '96766a4d-d508-4c82-8d3d-94dbf95df867',
+      user_id: 'd3b8e0be-c673-4bff-88f5-c72266955df3',
+      is_default: true,
+      email: 'enquiries@horizonvista.net',
+      phone: '+971585065419',
+      address: null,
+      landline: null,
+      created_at: null,
+      updated_at: '2024-03-22T16:11:51.000000Z',
+      first_name: 'Francisca',
+      last_name: 'Elizabeth Van Den Berkmortel',
+      deleted_at: null,
+      work_schedule_id: null
+    }
+  })
 </script>
 
 <style lang="scss">
@@ -249,7 +549,8 @@ const youtubeEmbedUrl = (url: string) => {
 
   &__top {
     display: flex;
-    margin-bottom: clamp(5rem, 3.7255rem + 5.2288vw, 10rem);
+    margin-bottom: clamp(5rem, 3.7255rem + 5.2288vw, 2rem);
+    background: var(--color-white);
 
     @media (max-width: 63.9375rem) {
       flex-direction: column;
@@ -271,7 +572,8 @@ const youtubeEmbedUrl = (url: string) => {
     }
 
     &-inner {
-      width: clamp(25rem, 46.5vw, 38.5rem);
+      width: clamp(18rem, 46.5vw, 88.5rem);
+      padding-left: 4rem;
 
       @media (max-width: 63.9375rem) {
         width: 100%;
@@ -289,7 +591,7 @@ const youtubeEmbedUrl = (url: string) => {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    min-height: min(37.1vw, 44.5rem);
+    min-height: min(24.1vw, 44.5rem);
     padding-block: 1.5rem 3.5rem;
     padding-inline: 0 3.5rem;
 
@@ -360,6 +662,7 @@ const youtubeEmbedUrl = (url: string) => {
     display: grid;
     margin-bottom: clamp(1.5rem, 0.6429rem + 1.3393vw, 2.25rem);
     color: var(--color-quaternary);
+    font-size: 3.4rem;
 
     @media (max-width: 47.9375rem) {
       gap: 0.25rem;
@@ -382,6 +685,10 @@ const youtubeEmbedUrl = (url: string) => {
     gap: 0.75rem;
     padding-block: 3.25rem 3.5rem;
     padding-inline: 0 3.5rem;
+    background: var(--color-white);
+    color: var(--color-quaternary);
+    font-size: 1.4rem;
+    font-weight: 500;
 
     @media (max-width: 63.9375rem) {
       padding: 0;
@@ -391,6 +698,7 @@ const youtubeEmbedUrl = (url: string) => {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
+      color: var(--color-quaternary);
     }
 
     &-item {
@@ -414,6 +722,10 @@ const youtubeEmbedUrl = (url: string) => {
         }
       }
     }
+  }
+
+  &__price {
+    font-size: 3.6rem;
   }
 
   &__image {
@@ -501,12 +813,10 @@ const youtubeEmbedUrl = (url: string) => {
   &__description {
     max-width: 47rem;
     margin-bottom: clamp(5rem, 3.7255rem + 5.2288vw, 10rem);
-    
+
     p {
       color: var(--color-white) !important;
     }
-
-
     @media (max-width: 63.9375rem) {
       display: none;
     }

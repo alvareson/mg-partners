@@ -16,10 +16,6 @@
         </ul>
       </nav>
     </div>
-    <div class="header-menu__bottom">
-      <AppLangSwitcher class="header-menu__lang" />
-      <Socials class="header-menu__socials" />
-    </div>
   </div>
 </template>
 
