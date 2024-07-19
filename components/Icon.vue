@@ -1,11 +1,13 @@
 <template>
-  <svg :width="width" :height="height">
-    <use :xlink:href="`/img/icons.svg#${name}`" />
+  <svg :width="iconWidth" :height="iconHeight">
+    <use :xlink:href="iconUrl" />
   </svg>
 </template>
 
 <script setup lang="ts">
-defineProps({
+import spriteUrl from "/img/sprite.svg?url"
+
+const props = defineProps({
   name: {
     type: String,
     default: "",
@@ -19,4 +21,10 @@ defineProps({
     default: 24,
   },
 })
+
+const { width: iconWidth, height: iconHeight, name: iconName } = toRefs(props)
+
+const iconUrl = computed(() => `${spriteUrl}#${iconName.value}`)
 </script>
+
+<style lang="scss"></style>

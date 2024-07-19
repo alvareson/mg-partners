@@ -592,7 +592,6 @@ const property = ref({
     flex-direction: column;
     align-items: flex-start;
     min-height: min(24.1vw, 44.5rem);
-    padding-block: 1.5rem 3.5rem;
     padding-inline: 0 3.5rem;
 
     @media (max-width: 63.9375rem) {
@@ -662,7 +661,7 @@ const property = ref({
     display: grid;
     margin-bottom: clamp(1.5rem, 0.6429rem + 1.3393vw, 2.25rem);
     color: var(--color-quaternary);
-    font-size: 3.4rem;
+    font-size: 2.8rem;
 
     @media (max-width: 47.9375rem) {
       gap: 0.25rem;
@@ -683,11 +682,11 @@ const property = ref({
   &__data {
     display: grid;
     gap: 0.75rem;
-    padding-block: 3.25rem 3.5rem;
+    padding-block: 3.25rem 2.5rem;
     padding-inline: 0 3.5rem;
     background: var(--color-white);
     color: var(--color-quaternary);
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     font-weight: 500;
 
     @media (max-width: 63.9375rem) {
@@ -725,7 +724,7 @@ const property = ref({
   }
 
   &__price {
-    font-size: 3.6rem;
+    font-size: 2.8rem;
   }
 
   &__image {

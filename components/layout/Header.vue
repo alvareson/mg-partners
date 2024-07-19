@@ -4,7 +4,7 @@
       <button class="header__toggle" type="button" @click="onToggleMenu">
         <!-- <span class="header__toggle-text-mobile">{{ isMenuOpen ? "Close" : "Menu" }}</span> -->
         <span class="header__toggle-icon">
-          <Icon :width="48" :height="48" :name="isMenuOpen ? 'close' : 'menu'" />
+          <Icon :width="62" :height="62" :name="isMenuOpen ? 'close' : 'menu'" />
         </span>
       </button>
       <AppLink :to="{ path: '/' }">
