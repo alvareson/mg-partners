@@ -1,0 +1,146 @@
+<template>
+  <div class="about-us-page">
+    <header class="about-us-page__header">
+      <h1 class="about-us-page__title">MG PARTNERS : YOUR TRUSTWORTHY PARTNER</h1>
+      <p class="about-us-page__subtitle">
+        At MG Partners, we’re synonymous with reliability and trustworthiness in real estate. Our commitment is steadfast: to keep you informed, whether it’s about promising opportunities or potential pitfalls. Just as the industry’s best, we pride ourselves on being a beacon of reliability. With a keen eye for discerning the best deals and a dedication to transparency, we ensure that every step of your real estate journey is guided by integrity.
+      </p>
+    </header>
+    <div class="about-us-page__body">
+      <section class="about-us-page__section">
+        <div class="about-us-page__text">
+          <h2>ELITE CONNECTIONS, EXPERT INSIGHT</h2>
+          <p>
+            MG Partners has over two decades of experience and brings unique expertise to the table, particularly in our seamless collaboration with international partners. We offer a curated selection of luxury properties coupled with unparalleled service. Our team of specifically selected experts ensures expert guidance every step of the way. At MG Partners, we excel in the prime and super-prime real estate market, leveraging our global network to consistently deliver exceptional service. Each member of our team contributes their wealth of expertise and skills, fostering collaboration and synergy to ensure our clients' success. Additionally, we maintain exclusive and privileged contacts with developers, enhancing our ability to secure the finest properties for our clients.
+          </p>
+        </div>
+        <div class="about-us-page__image">
+          <img src="/img/aboutus1.jpg" alt="Elite Connections" />
+        </div>
+      </section>
+      <section class="about-us-page__section">
+        <div class="about-us-page__image">
+          <img src="/img/aboutus2.jpg" alt="On-Demand and On-Location" />
+        </div>
+        <div class="about-us-page__text">
+          <h2>ON-DEMAND AND ON-LOCATION</h2>
+          <p>
+            As a key player in the luxury real estate industry worldwide, MG Partners is dedicated to providing tailor-made services across the globe, utilizing our exclusive network to offer a personalized touch to every endeavor. Our commitment to each client ensures top-tier guidance and recommendations to facilitate optimal property choices. Leveraging cutting-edge marketing strategies and advanced technology, we ensure your luxury property stands out prominently, attracting the most relevant buyers.
+          </p>
+        </div>
+      </section>
+      <section class="about-us-page__section">
+        <div class="about-us-page__text">
+          <h2>PROUD HERITAGE</h2>
+          <p>
+            As a part of the globally renowned MG brand, MG Partners upholds an unparalleled reputation for excellence. Our unique heritage guarantees clients that they are collaborating with a reliable partner capable of delivering top-tier exposure and unparalleled service.
+          </p>
+        </div>
+        <div class="about-us-page__image">
+          <img src="/img/aboutus3.jpg" alt="Proud Heritage" />
+        </div>
+      </section>
+      <section class="about-us-page__section">
+        <div class="about-us-page__image">
+          <img src="/img/aboutus4.jpg" alt="Enhancing Value" />
+        </div>
+        <div class="about-us-page__text">
+          <h2>ENHANCING VALUE THROUGH EXEMPLARY STANDARDS</h2>
+          <p>
+            Wherever you may be, the MG Partners team possesses the skill to actualize your aspirations within the sphere of luxury real estate. Beyond their extensive proficiency in local and global residential sales, our experts can provide support across diverse domains such as rentals, property management, new development sales, investment, and portfolio management. At MG Partners, we advocate for a distinctive perspective on luxury real estate—one that places the client at the core of all our endeavors.
+          </p>
+        </div>
+      </section>
+      <footer class="about-us-page__footer">
+        <p>OUR LEGACY. OUR TRADITION. YOUR BENEFIT.</p>
+      </footer>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+
+</script>
+
+<style lang="scss">
+.about-us-page {
+  background: var(--color-white);
+  padding: 2rem;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    background: var(--color-white);
+  }
+
+  &__title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--color-quaternary);
+  }
+
+  &__subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--color-quaternary);
+    width: 70rem;
+    margin: 0 auto;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    max-width: 1200px;
+
+    &:nth-child(odd) {
+      .about-us-page__text {
+        order: 1;
+      }
+      .about-us-page__image {
+        order: 2;
+      }
+    }
+  }
+
+  &__text {
+    background-color: var(--color-quaternary);
+    padding: 2rem;
+    color: var(--color-white);
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  &__footer {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-top: 2rem;
+  }
+}
+</style>

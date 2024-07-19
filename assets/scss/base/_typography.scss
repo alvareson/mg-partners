@@ -1,0 +1,43 @@
+:root {
+  --font-family: "Open Sans", sans-serif;
+  --font-family-alt: Prata, serif;
+}
+
+html {
+  font-family: var(--font-family);
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+}
+
+.text-h1,
+.text-h2,
+.text-h3,
+.text-h4 {
+  font-family: var(--font-family-alt);
+  font-weight: normal;
+}
+
+.text-h1 {
+  font-size: clamp(2rem, 1.1824rem + 3.3543vw, 4rem);
+  line-height: 1.36;
+}
+
+.text-h2 {
+  font-size: clamp(2rem, 1.7956rem + 0.8386vw, 2.5rem);
+  line-height: 1.35;
+}
+
+.text-h3 {
+  font-size: clamp(1.5rem, 1.2956rem + 0.8386vw, 2rem);
+  line-height: 1.5;
+}
+
+.text-h4 {
+  font-size: 1.5rem;
+  line-height: 1.33;
+}

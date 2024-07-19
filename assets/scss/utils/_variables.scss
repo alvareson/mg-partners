@@ -1,0 +1,31 @@
+@use "sass:map";
+
+// prettier-ignore
+$colors: (
+  "white"     : ( "hex": #ffffff, "display-p3": 1 1 1 ),
+  "primary"   : ( "hex": #280a0b, "display-p3": 0.1428 0.0466 0.0465 ),
+  "secondary" : ( "hex": #bbb0a1, "display-p3": 0.7259 0.6917 0.6378 ),
+  "tertiary"  : ( "hex": #fef8ee, "display-p3": 0.992 0.9733 0.9374 ),
+  "quaternary": ( "hex": #1e517b, "display-p3": 0.1729 0.3133 0.4691 ), 
+);
+
+:root {
+  --color-white: #ffffff;
+  --color-primary: #280a0b;
+  --color-secondary: #bbb0a1;
+  --color-tertiary: #fef8ee;
+  --color-quaternary: rgb(30, 81, 123);
+
+  --color-white-rgb: 255, 255, 255;
+  --color-primary-rgb: 40, 10, 11;
+  --color-secondary-rgb: 187, 176, 161;
+  --color-quaternary-rgb: 30, 81, 123;
+}
+
+@media (color-gamut: p3) {
+  :root {
+    @each $color in map.keys($colors) {
+      --color-#{$color}: color(display-p3 #{map.get($colors, $color, "display-p3")});
+    }
+  }
+}

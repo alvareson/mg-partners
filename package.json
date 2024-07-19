@@ -1,0 +1,32 @@
+{
+  "name": "mg-partners",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "deploy": "nuxi generate && netlify deploy --prod --site mindall.co -d .output/public"
+  },
+  "devDependencies": {
+    "@nuxtjs/i18n": "^8.0.0",
+    "nuxt": "^3.9.3",
+    "postcss-html": "^1.6.0",
+    "postcss-scss": "^4.0.9",
+    "sass": "^1.70.0",
+    "stylelint": "^16.2.0",
+    "stylelint-config-recommended-vue": "^1.5.0",
+    "stylelint-order": "^6.0.4",
+    "vue": "^3.4.14",
+    "vue-router": "^4.2.5"
+  },
+  "dependencies": {
+    "@nuxtjs/robots": "^3.0.0",
+    "@vueuse/components": "^10.7.2",
+    "@vueuse/core": "^10.7.2",
+    "nuxt-directus": "^5.6.0",
+    "swiper": "^11.0.7",
+    "vue-tel-input": "^9.1.4"
+  }
+}

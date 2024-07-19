@@ -1,0 +1,24 @@
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 300 800;
+  src: url("/fonts/OpenSans-Variable.woff2") format("woff2 supports variations"), url("/fonts/OpenSans-Variable.woff2") format("woff2-variations");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Prata;
+  font-style: normal;
+  font-weight: normal;
+  src: url("/fonts/Prata-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  // https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&text=:0123456789
+  font-family: "Roboto Mono Digits";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/fonts/RobotoMono-Digits.woff2") format("woff2");
+  font-display: swap;
+}
