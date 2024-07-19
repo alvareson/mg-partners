@@ -9,14 +9,14 @@
       </button>
       <AppLink :to="{ path: '/' }">
         <svg class="header__logo" width="120" height="120">
-          <use xlink:href="/img/logos.svg#logo" />
+          <use xlink:href="/img/mgpartners.svg#mgpartners-logo" />
         </svg>
       </AppLink>
       <button class="header__contact" type="button" @click="isContactUsOpen = true">
         <span class="header__contact-icon">
           <Icon class="header__contact-arrow" name="arrow-right" width="58" height="6" />
         </span>
-        Contact us
+        <p class="header__contact-title">Contact us</p>
       </button>
       <button class="header__menu-btn" type="button" aria-label="Open menu" @click="isMobileMenuOpen = true">
         <Icon name="menu" width="32" height="32" />
@@ -88,6 +88,7 @@ const onCloseMenu = () => {
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     padding-block: 0.75rem;
+    padding-bottom: 0rem;
 
     @media (max-width: 56rem) {
       padding-block: 0;
@@ -165,12 +166,12 @@ const onCloseMenu = () => {
 
       &::before,
       &::after {
-        --color: var(--color-primary);
+        --color: var(--color-quaternary);
         grid-area: 1 / -1;
         width: var(--size);
         height: var(--size);
         content: "";
-        border: 0.0625rem solid var(--color);
+        border: 0.0625rem solid var(--color-quaternary);
         transition: 0.3s;
         transition-property: transform, opacity;
         transform: rotate(45deg);
@@ -204,10 +205,15 @@ const onCloseMenu = () => {
       grid-area: 1 / -1;
       transition: transform 0.3s;
       transform: translateX(-1.625rem);
+      color: var(--color-quaternary);
 
       .header__contact:hover & {
         transform: translateX(0);
       }
+    }
+
+    &-title {
+      color: var(--color-quaternary);
     }
   }
 
