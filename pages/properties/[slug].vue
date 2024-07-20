@@ -59,7 +59,9 @@
           <div v-if="amenitiesWithIcons && amenitiesWithIcons.length > 0" class="property__features" ref="featuresRef">
             <h2 class="property__subtitle text-h3">Features</h2>
             <ul class="property__features-list">
-              <li class="property__features-item" v-for="{ name, icon } in amenitiesWithIcons" :key="name"><Icon :name="icon" /> {{ name }}</li>
+              <li class="property__features-item" v-for="{ name, icon } in amenitiesWithIcons" :key="name">
+                <Icon :name="icon" /> {{ name }}
+              </li>
             </ul>
             <button class="property__features-all" type="button" v-if="amenitiesWithIcons.length > 9" @click="viewAllFeatures">
               View all
@@ -83,7 +85,7 @@
             <img :src="localMap" width="740" height="320" alt="" />
           </div>
         </div>
-        <!-- <ContactAgent class="property__contact-agent" :broker="broker" :reference="property.reference" /> -->
+        <ContactAgent class="property__contact-agent" :broker="broker" :reference="property.reference" />
       </div>
     </div>
     <!-- <AboutNeighborhood v-if="neighborhood" :neighborhood="neighborhood" />
@@ -123,22 +125,24 @@ const showOverlay = ref(false)
 //   if (property.value?.broker.id) broker.value = await getBroker(property.value?.broker.id)
 // })
 
-const broker = ref({
-  name: "John Doe",
-  phone: "555-1234",
-  email: "john.doe@example.com"
-})
-
 const neighborhood = ref({
   name: "Downtown",
   description: "A vibrant neighborhood with plenty of amenities and attractions."
 })
 
-const amenitiesWithIcons = ref([
-  { name: "Swimming Pool", icon: "pool" },
-  { name: "Gym", icon: "gym" },
-  { name: "Garage", icon: "garage" }
-])
+const broker = ref({
+  firstName: "Richard",
+  lastName: "Barnett"
+})
+
+const amenitiesWithIcons = computed(() => {
+  return (
+    property?.value?.amenities?.map(amenity => ({
+      name: formatAmenityName(amenity),
+      icon: amenityIcons[amenity] || "",
+    })) || []
+  )
+})
 
 const changeOverlay = () => {
   showOverlay.value = !showOverlay.value
@@ -219,7 +223,7 @@ const property = ref({
           language: 'english',
           title: 'PREMIUM AND SPACIOUS | FURNISHED | HIGH FLOOR',
           text: 
-            '<p>Horizonvista Real Estate proudly presents this amazing 2-bedroom apartment for rent in Business Bay. Apartments in DAMAC Maison Bay’s Edge offer a world of luxurious amenities and services along with breathtaking views. T</p><p><br></p><p>The tower consists of 24 floors above ground.  The property offers stunning balcony views and is easily accessible on Sheikh Zayed Road and Business Bay Metro. </p><p>The apartment benefits from a large living room/bedroom area allowing for an airy feel and plenty of natural light directly from the sun—the best Property to buy in Dubai. </p><p><strong>Property Details:</strong> </p><p>- Fully Furnished </p><p>- BUA: 1254.53 sqft</p><p> - 2 Bedroom</p><p> - 3 Bathroom </p><p>- Living / Dining Area </p><p>- Fully Fitted Kitchen </p><p>- Open Plan</p><p> - Built-in Wardrobes</p><p> - Balcony </p><p> <strong>Facilities &amp; Amenities:</strong></p><p> - Covered Parking</p><p> - Near to Public Transport</p><p> - Swimming Pool </p><p>- Kids Play Area</p><p> - Kids Pool </p><p>- Gymnasium </p><p>- Sauna and Steam Rooms </p><p>- Jacuzzi</p><p> - 24-hour Security</p><p> - CCTV Cameras </p><p>- 24-hour Concierge Services </p><p>- Valet Parking </p><p><br></p><p><strong>For more details about the property or to schedule a viewing contact our dedicated team at HorizonVista Real Estate.</strong></p>'
+            '<p>Our company presents this amazing 2-bedroom apartment for rent in Business Bay. Apartments in DAMAC Maison Bay’s Edge offer a world of luxurious amenities and services along with breathtaking views.</p><p>The tower consists of 24 floors above ground.  The property offers stunning balcony views and is easily accessible on Sheikh Zayed Road and Business Bay Metro. </p><p>The apartment benefits from a large living room/bedroom area allowing for an airy feel and plenty of natural light directly from the sun—the best Property to buy in Dubai. </p><br><p><strong>Property Details:</strong> </p><p>- Fully Furnished </p><p>- BUA: 1254.53 sqft</p><p> - 2 Bedroom</p><p> - 3 Bathroom </p><p>- Living / Dining Area </p><p>- Fully Fitted Kitchen </p><p>- Open Plan</p><p> - Built-in Wardrobes</p><p> - Balcony </p>'
         }
       ],
       website: null,
@@ -798,6 +802,7 @@ const property = ref({
     gap: 2rem;
     align-items: flex-start;
     justify-content: space-between;
+    padding-left: 4rem;
 
     @media (max-width: 63.9375rem) {
       display: block;
@@ -900,6 +905,7 @@ const property = ref({
     position: sticky;
     top: 1.5rem;
     width: clamp(25rem, 40vw, 33.5rem);
+    z-index: 9000;
 
     @media (max-width: 63.9375rem) {
       margin-top: 15px;
