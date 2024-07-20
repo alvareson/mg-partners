@@ -93,7 +93,7 @@ const toggleSection = (section: string) => {
   font-size: 0.875rem;
   line-height: 1.71;
   color: var(--color-tertiary);
-  background: var(--color-quaternary);
+  background: var(--color-quaternary) url('/img/footerBackground.png') no-repeat center/cover;
 
   @media (max-width: 47.9375rem) {
     padding-block: 2.5rem 2.5rem;
@@ -269,7 +269,6 @@ const toggleSection = (section: string) => {
     height: 19rem;
     color: var(--color-tertiary);
     text-align: center;
-    background: var(--color-quaternary);
 
     &__container {
       display: grid;

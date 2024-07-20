@@ -103,8 +103,8 @@ const onSubmit = async () => {
 
 <style lang="scss">
 .contact-agent {
-  color: var(--color-white);
-  background: var(--color-secondary);
+  color: var(--color-quaternary);
+  background: var(--color-white);
 
   &__header {
     display: grid;
@@ -139,6 +139,7 @@ const onSubmit = async () => {
     display: grid;
     gap: 1.5rem;
     padding: 1.5rem 2rem 2rem;
+    color: var(--color-quaternary);
 
     &-error {
       color: red; 
@@ -149,13 +150,13 @@ const onSubmit = async () => {
   &__input {
     --border-opacity: 0.57;
     padding: 1.125rem 1.5rem;
-    color: inherit;
+    color: var(--color-quaternary);
     background: none;
-    border: 0.0625rem solid rgba(var(--color-white-rgb), var(--border-opacity));
+    border: 0.0625rem solid rgba(var(--color-gray-rgb), var(--border-opacity));
     transition: border 0.25s;
 
     &::placeholder {
-      color: rgba(var(--color-white-rgb), 0.57);
+      color: rgba(var(--color-gray-rgb), 0.57);
       opacity: 1;
     }
 
@@ -166,7 +167,7 @@ const onSubmit = async () => {
   }
 
   &__submit.btn {
-    background: var(--color-primary);
+    background: var(--color-quaternary);
   }
 }
 </style>

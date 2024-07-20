@@ -80,7 +80,7 @@
             <h2 class="property__subtitle text-h3">Location</h2>
             <div v-if="property.location" class="property__location-wrapper">
               <p>{{ handleAddress(property.location) }}</p>
-              <!-- <button class="property__location-google-maps" type="button" @click="openInGoogleMaps">See on Google Maps</button> -->
+              <button class="property__location-google-maps" type="button" @click="openInGoogleMaps">See on Google Maps</button>
             </div>
             <img :src="localMap" width="740" height="320" alt="" />
           </div>
@@ -271,8 +271,8 @@ const property = ref({
       },
       type: 'Point',
       coordinates: [ 55.27151019999999, 25.1815668 ],
-      lng: 55.27151019999999,
-      lat: 25.1815668
+      lng: 25.189049,
+      lat: 55.264700
     },
     media: {
       documents: [
@@ -906,6 +906,7 @@ const property = ref({
     top: 1.5rem;
     width: clamp(25rem, 40vw, 33.5rem);
     z-index: 9000;
+    margin-right: 5%;
 
     @media (max-width: 63.9375rem) {
       margin-top: 15px;
