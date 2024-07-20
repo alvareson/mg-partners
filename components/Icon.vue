@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import spriteUrl from "/img/sprite.svg?url"
+import spriteUrl from "/img/icons.svg?url"
 
 const props = defineProps({
   name: {
