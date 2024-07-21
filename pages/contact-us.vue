@@ -34,7 +34,12 @@
               <p>
                 By clicking «Submit» you agree to our <a href="#">Privacy Policy</a>
               </p>
-              <button type="submit">SUBMIT</button>
+              <button class="contact-us__contact" type="button">
+                <span class="contact-us__contact-icon">
+                  <Icon class="contact-us__contact-arrow" name="arrow-right" width="58" height="6" />
+                </span>
+                <p class="contact-us__contact-title">Submit</p>
+              </button>
             </div>
           </form>
         </div>
@@ -224,8 +229,7 @@ onMounted(() => {
   }
 
   &__form-footer button {
-    padding: 0.75rem 1.5rem;
-    background-color: var(--color-secondary);
+    padding: 0.75rem .1rem;
     color: var(--color-white);
     border: none;
     cursor: pointer;
@@ -244,10 +248,6 @@ onMounted(() => {
     gap: 1rem;
   }
 
-  // &__social {
-  //   padding-top: 0.2rem;
-  // }
-
   &__social-media svg {
     margin-top: 0.8rem;
   }
@@ -265,6 +265,74 @@ onMounted(() => {
   &__image-section img {
     max-width: 100%;
     height: auto;
+  }
+
+  &__contact {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+    margin-left: auto;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.33;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+
+    @media (max-width: 56rem) {
+      display: none;
+    }
+
+    &-icon {
+      display: grid;
+      place-items: center;
+
+      &::before,
+      &::after {
+        --color: var(--color-white);
+        grid-area: 1 / -1;
+        width: var(--size);
+        height: var(--size);
+        content: "";
+        border: 0.0625rem solid var(--color-white);
+        transition: 0.3s;
+        transition-property: transform, opacity;
+        transform: rotate(45deg);
+      }
+
+      &::before {
+        --size: 3rem;
+        opacity: 0.2;
+
+        .contact-us__contact:hover & {
+          opacity: 0;
+          transform: rotate(-45deg);
+        }
+      }
+
+      &::after {
+        --size: 2rem;
+
+        .contact-us__contact:hover & {
+          opacity: 0;
+          transform: rotate(135deg);
+        }
+      }
+    }
+
+    &-arrow {
+      grid-area: 1 / -1;
+      transition: transform 0.3s;
+      transform: translateX(-1.625rem);
+      color: var(--color-white);
+
+      .contact-us__contact:hover & {
+        transform: translateX(0);
+      }
+    }
+
+    &-title {
+      color: var(--color-white);
+    }
   }
 
   @media (prefers-reduced-motion: no-preference) {
