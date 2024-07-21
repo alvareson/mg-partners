@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    <div class="container">
+    <div class="footer-container">
       <div class="footer__top">
         <nav class="footer__menu">
           <ul class="footer__menu-items">
@@ -31,17 +31,16 @@
         <section class="contact-us-footer">
           <div class="contact-us-footer__container">
             <h2 class="contact-us-footer__title text-h2">Schedule Your Private Consultation</h2>
-            <button class="contact-us-footer__btn" type="button">
+            <button class="contact-us-footer__btn" type="button" @click="isContactUsOpen = true">
               <span class="contact-us-footer__icon">
                 <Icon class="contact-us-footer__phone" name="phone" width="32" height="32" />
               </span>
-              Contact us
             </button>
           </div>
-          <!-- <Dialog :component="ContactUsDialog" :open="isContactUsOpen" @close="isContactUsOpen = false" /> -->
+          <Dialog :component="ContactUsDialog" :open="isContactUsOpen" @close="isContactUsOpen = false" />
         </section>
         <svg class="footer__logo" width="248" height="248">
-          <use xlink:href="/img/logos.svg#logo" />
+            <use xlink:href="/img/mgpartners.svg#mgpartners-logo" />
         </svg>
       </div>
       <p class="footer__copyright">© MG & Partners {{ new Date().getFullYear() }}</p>
@@ -50,6 +49,10 @@
 </template>
 
 <script setup lang="ts">
+import ContactUsDialog from "@/components/ContactUsDialog.vue"
+
+const isContactUsOpen = ref(false)
+
 const menu: FooterMenu[] = [
   {
     title: "Property Sales",
@@ -106,7 +109,7 @@ const toggleSection = (section: string) => {
   &__top {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     margin-bottom: 2rem;
 
     @media (max-width: 47.9375rem) {
@@ -115,7 +118,6 @@ const toggleSection = (section: string) => {
   }
 
   &__menu {
-    flex-grow: 0.4;
     flex-shrink: 0;
     padding-top: 3rem;
 
@@ -253,8 +255,7 @@ const toggleSection = (section: string) => {
   }
 
   &__logo {
-    color: var(--color-secondary);
-    margin-left: 4rem;
+    margin-right: 4rem;
   }
 
   &__copyright {
@@ -266,7 +267,6 @@ const toggleSection = (section: string) => {
   .contact-us-footer {
     display: grid;
     place-items: center;
-    height: 19rem;
     color: var(--color-tertiary);
     text-align: center;
 

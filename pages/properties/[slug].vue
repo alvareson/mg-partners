@@ -903,9 +903,9 @@ const property = ref({
 
   &__contact-agent {
     position: sticky;
-    top: 1.5rem;
+    top: 10.5rem;
     width: clamp(25rem, 40vw, 33.5rem);
-    z-index: 9000;
+    z-index: 999;
     margin-right: 5%;
 
     @media (max-width: 63.9375rem) {

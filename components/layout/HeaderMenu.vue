@@ -9,7 +9,7 @@
       <nav class="header-menu__nav">
         <ul class="header-menu__list">
           <li class="header-menu__item" v-for="item in menu" :key="item.name">
-            <AppLink :to="item.to" class="header-menu__link text-h3" @click="$emit('close-menu')">
+            <AppLink :to="item.to" class="header-menu__link" @click="$emit('close-menu')">
               {{ item.name }}
             </AppLink>
           </li>
@@ -71,7 +71,7 @@ useWatcher(open)
   background: var(--color-white);
   transition: transform 0.4s ease-in-out;
   transform: translateY(-100%);
-  height: 50%;
+  height: max-content;
 
   &--open {
     transform: translateY(0);
@@ -82,7 +82,6 @@ useWatcher(open)
     align-items: center;
     justify-content: space-between;
     height: 4rem;
-    padding: 1rem;
     background: var(--color-white);
   }
 
@@ -145,16 +144,19 @@ useWatcher(open)
   &__link {
     position: relative;
     display: block;
-    padding: 1rem;
+    padding-left: 1.5rem;
+    padding-bottom: 1rem;
     text-transform: uppercase;
     transition: color 0.3s;
     color: var(--color-quaternary);
-    font-size: 1.8rem;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1.6rem;
 
     &::after {
       position: absolute;
       inset-inline-start: 0;
-      bottom: -0.0625rem;
+      bottom: 0.3625rem;
       width: 0;
       height: 0.0625rem;
       content: "";

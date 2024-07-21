@@ -8,7 +8,7 @@
         </span>
       </button>
       <AppLink :to="{ path: '/' }">
-        <svg class="header__logo" width="120" height="120">
+        <svg class="header__logo" width="140" height="140">
           <use xlink:href="/img/mgpartners.svg#mgpartners-logo" />
         </svg>
       </AppLink>
@@ -79,7 +79,8 @@ const onCloseMenu = () => {
 
 <style lang="scss" scoped>
 .header {
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 1000;
   background: var(--color-white);
 
@@ -117,6 +118,11 @@ const onCloseMenu = () => {
         text-decoration-color: var(--color-white);
       }
     }
+  }
+
+  &__toggle {
+    padding-left: 1rem;
+    padding-bottom: 0.5rem;
   }
 
   &__back {
