@@ -128,6 +128,8 @@ const formatRentPrice = price => {
   &__price {
     margin-bottom: 0.75rem;
     opacity: 0.8;
+    font-size: 1.125rem;
+    font-weight: 700;
 
     @media (max-width: 34rem) {
       margin-bottom: 1.25rem;
@@ -151,8 +153,8 @@ const formatRentPrice = price => {
   }
 
   &__info {
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: 800;
     line-height: 1.5;
 
     @media (max-width: 34rem) {
