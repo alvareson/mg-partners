@@ -59,7 +59,23 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted } from 'vue'
 
+onMounted(() => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible')
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  document.querySelectorAll('.about-us-page__section').forEach((section) => {
+    observer.observe(section);
+  })
+})
 </script>
 
 <style lang="scss">
@@ -99,14 +115,23 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 100%;
+    opacity: 0;
+    transform: translateY(-50px);
+    animation: fadeIn 3s forwards;
+
+    &:nth-child(even) {
+      animation-delay: 1s;
+    }
 
     &:nth-child(odd) {
       .about-us-page__text {
         order: 1;
         background-color: var(--color-quaternary);
+        animation: slideInLeft 1s forwards;
       }
       .about-us-page__image {
         order: 2;
+        animation: slideInRight 1s forwards;
       }
     }
 
@@ -114,6 +139,10 @@
       .about-us-page__text {
         background-color: var(--color-white);
         color: var(--color-quaternary);
+        animation: slideInRight 1s forwards;
+      }
+      .about-us-page__image {
+        animation: slideInLeft 1s forwards;
       }
     }
   }
@@ -152,6 +181,36 @@
     font-size: 1.5rem;
     color: var(--color-primary);
     margin-top: 2rem;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 </style>
