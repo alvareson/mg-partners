@@ -1,7 +1,18 @@
 <template>
   <section class="hero">
     <div class="container">
-      <SearchForm />
+      <div class="hero__search-wrapper">
+        <div class="hero__options">
+          <button 
+            v-for="option in options" 
+            :key="option" 
+            :class="{'active': selectedOption === option}" 
+            @click="selectOption(option)">
+            {{ option }}
+          </button>
+        </div>
+        <SearchForm />
+      </div>
     </div>
     <div class="hero__video">
       <video autoplay muted loop>
@@ -12,7 +23,14 @@
 </template>
 
 <script setup lang="ts">
-// const { t } = useI18n()
+import { ref } from 'vue'
+
+const options = ['Buy', 'Rent', 'Development']
+const selectedOption = ref(options[0])
+
+const selectOption = (option: string) => {
+  selectedOption.value = option
+}
 </script>
 
 <style lang="scss" scoped>
@@ -41,6 +59,32 @@
   &__title {
     margin-bottom: clamp(1rem, 0.777rem + 0.915vw, 1.875rem);
     text-align: center;
+  }
+
+  &__search-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    width: 100%;
+  }
+
+  &__options {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    margin-right: 3rem;
+
+    button {
+      background: none;
+      border: none;
+      color: var(--color-secondary);
+      font-size: 1.25rem;
+      cursor: pointer;
+
+      &.active {
+        color: var(--color-white);
+      }
+    }
   }
 
   &__video {
