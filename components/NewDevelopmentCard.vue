@@ -123,11 +123,41 @@ const displayPrice = computed(() => {
     cursor: pointer;
     font-size: 1.2rem;
     border-radius: 0.25rem;
-    transition: background-color 0.3s;
+    overflow: hidden;
+    transition: color 0.6s;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--color-quaternary);
+      transition: transform 0.6s;
+      z-index: -1;
+    }
+
+    &::before {
+      top: 0;
+      transform: translateY(-100%);
+    }
+
+    &::after {
+      top: 0;
+      transform: translateY(100%);
+    }
 
     &:hover {
-      background-color: var(--color-quaternary);
       color: var(--color-white);
+
+      &::before {
+        transform: translateY(0);
+      }
+
+      &::after {
+        transform: translateY(0);
+      }
     }
   }
 }
