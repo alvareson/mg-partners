@@ -30,7 +30,7 @@
         <li class="property-card__data-item">{{ property.area }} {{ measurement }}</li>
       </ul>
       <p class="property-card__price" v-if="property.price">
-        ${{ property.price }}
+        {{ displayPrice }}
       </p>
     </div>
   </AppLink>
@@ -49,6 +49,18 @@ const props = defineProps({
 })
 
 const measurement = ref<MeasurementUnit>(MeasurementUnit.SquareFeet)
+
+const displayPrice = computed(() => {
+  return props.property.deal === "sale" ? formatSalePrice(props.property.price) : formatRentPrice(props.property.price)
+})
+
+const formatSalePrice = price => {
+  return `AED ${price.toLocaleString('en-US')}`
+}
+
+const formatRentPrice = price => {
+  return `AED ${price.toLocaleString('en-US')} / month`
+}
 </script>
 
 <style lang="scss">
@@ -62,7 +74,7 @@ const measurement = ref<MeasurementUnit>(MeasurementUnit.SquareFeet)
   background-color: var(--color-quaternary);
   width: 100%;
   max-width: 45rem;
-  height: 30rem;
+  height: max-content;
 
   @media (max-width: 34rem) {
     --padding: 1.5rem;
@@ -87,10 +99,10 @@ const measurement = ref<MeasurementUnit>(MeasurementUnit.SquareFeet)
     inset-inline-start: var(--padding);
     top: var(--padding);
     padding: 0.5rem 1rem;
-    font-size: 1rem;
+    font-size: 0.7rem;
     font-weight: 500;
     line-height: 1.33;
-    color: var(--color-primary);
+    color: var(--color-quaternary);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     background: var(--color-white);
@@ -126,7 +138,7 @@ const measurement = ref<MeasurementUnit>(MeasurementUnit.SquareFeet)
   &__data {
     display: flex;
     flex-wrap: wrap;
-    gap: 0 1rem;
+    gap: 0 0.2rem;
 
     &-item {
       &:not(:first-child) {
@@ -139,7 +151,7 @@ const measurement = ref<MeasurementUnit>(MeasurementUnit.SquareFeet)
   }
 
   &__info {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 600;
     line-height: 1.5;
 

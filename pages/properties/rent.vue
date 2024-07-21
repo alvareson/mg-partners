@@ -2,7 +2,7 @@
   <div class="properties">
     <header class="properties__header">
       <div class="container">
-        <h1 class="properties__title text-h2">Rent</h1>
+        <h1 class="properties__title">{{ pageTitle }}</h1>
         <SearchForm class="properties__search-form" />
       </div>
     </header>
@@ -31,10 +31,7 @@ import { getBrokers } from "~/data/properties/api"
 import { PropertyTypes } from "~/utils/types"
 import { useWatcher } from "@/composables/watcher"
 
-const pageTitle = computed(() => {
-  const dealType = route.params.dealType
-  return dealType === 'sale' ? 'PROPERTIES FOR SALE' : 'PROPERTIES FOR RENT'
-})
+const pageTitle = ref("PROPERTIES FOR RENT")
 
 const filters = ref({
   dealType: '',
@@ -69,7 +66,8 @@ const properties = computed(() => {
       baths: 7,
       area: 26204,
       title: "Apartments in DownTown",
-      type: "Sale"
+      type: "Apartment",
+      deal: "rent"
     },
     {
       id: 2,
@@ -79,7 +77,8 @@ const properties = computed(() => {
       baths: 7,
       area: 26204,
       title: "Apartments in DownTown",
-      type: "Sale"
+      type: "Apartment",
+      deal: "rent"
     },
     {
       id: 3,
@@ -89,7 +88,8 @@ const properties = computed(() => {
       baths: 7,
       area: 26204,
       title: "Apartments in DownTown",
-      type: "Sale"
+      type: "Apartment",
+      deal: "rent"
     },
     {
       id: 4,
@@ -99,7 +99,8 @@ const properties = computed(() => {
       baths: 7,
       area: 26204,
       title: "Apartments in DownTown",
-      type: "Sale"
+      type: "Apartment",
+      deal: "rent"
     },
     {
       id: 5,
@@ -109,7 +110,8 @@ const properties = computed(() => {
       baths: 7,
       area: 26204,
       title: "Apartments in DownTown",
-      type: "Sale"
+      type: "Apartment",
+      deal: "rent"
     },
     {
       id: 6,
@@ -119,7 +121,8 @@ const properties = computed(() => {
       baths: 7,
       area: 26204,
       title: "Apartments in DownTown",
-      type: "Sale"
+      type: "Apartment",
+      deal: "rent"
     },
     {
       id: 7,
@@ -129,7 +132,8 @@ const properties = computed(() => {
       baths: 7,
       area: 26204,
       title: "Apartments in DownTown",
-      type: "Sale"
+      type: "Apartment",
+      deal: "rent"
     },
     {
       id: 8,
@@ -139,7 +143,8 @@ const properties = computed(() => {
       baths: 7,
       area: 26204,
       title: "Apartments in DownTown",
-      type: "Sale"
+      type: "Apartment",
+      deal: "rent"
     }
   ]
 })
@@ -230,10 +235,13 @@ watch(() => route.query, () => {
     padding-top: clamp(1rem, 0.299rem + 2.8758vw, 3.75rem);
     padding-bottom: clamp(1.5rem, 0.9902rem + 2.0915vw, 3.5rem);
     color: var(--color-white);
+    width: max-content;
   }
 
   &__title {
     margin-bottom: 1.75rem;
+    letter-spacing: 0.15rem;
+    font-weight: 600;
 
     @media (max-width: 47.9375rem) {
       margin-bottom: 1.25rem;

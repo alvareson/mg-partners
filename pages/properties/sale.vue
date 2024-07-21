@@ -2,7 +2,7 @@
   <div class="properties">
     <header class="properties__header">
       <div class="container">
-        <h1 class="properties__title text-h2">Sale</h1>
+        <h1 class="properties__title">{{ pageTitle }}</h1>
         <SearchForm class="properties__search-form" />
       </div>
     </header>
@@ -31,10 +31,7 @@ import { getBrokers } from "~/data/properties/api"
 import { PropertyTypes } from "~/utils/types"
 import { useWatcher } from "@/composables/watcher"
 
-const pageTitle = computed(() => {
-  const dealType = route.params.dealType
-  return dealType === 'sale' ? 'PROPERTIES FOR SALE' : 'PROPERTIES FOR RENT'
-})
+const pageTitle = ref("PROPERTIES FOR SALE")
 
 const filters = ref({
   dealType: '',
@@ -64,82 +61,90 @@ const properties = computed(() => {
     {
       id: 1,
       icon: "/img/apartments/flat1.jpeg",
-      price: 1000,
+      price: 35336308,
       beds: 7,
       baths: 7,
       area: 26204,
       title: "Apartments in DownTown",
-      type: "Sale"
+      type: "Apartment",
+      deal: "sale"
     },
     {
       id: 2,
       icon: "/img/apartments/flat2.jpeg",
-      price: 1000,
+      price: 35336308,
       beds: 7,
       baths: 7,
       area: 26204,
       title: "Apartments in DownTown",
-      type: "Sale"
+      type: "Apartment",
+      deal: "sale"
     },
     {
       id: 3,
       icon: "/img/apartments/flat3.jpeg",
-      price: 1000,
+      price: 35336308,
       beds: 7,
       baths: 7,
       area: 26204,
       title: "Apartments in DownTown",
-      type: "Sale"
+      type: "Apartment",
+      deal: "sale"
     },
     {
       id: 4,
       icon: "/img/apartments/flat4.jpeg",
-      price: 1000,
+      price: 35336308,
       beds: 7,
       baths: 7,
       area: 26204,
       title: "Apartments in DownTown",
-      type: "Sale"
+      type: "Apartment",
+      deal: "sale"
     },
     {
       id: 5,
       icon: "/img/apartments/flat5.jpeg",
-      price: 1000,
+      price: 35336308,
       beds: 7,
       baths: 7,
       area: 26204,
       title: "Apartments in DownTown",
-      type: "Sale"
+      type: "Apartment",
+      deal: "sale"
     },
     {
       id: 6,
       icon: "/img/apartments/flat6.jpeg",
-      price: 1000,
+      price: 35336308,
       beds: 7,
       baths: 7,
       area: 26204,
       title: "Apartments in DownTown",
-      type: "Sale"
+      type: "Apartment",
+      deal: "sale"
     },
     {
       id: 7,
       icon: "/img/apartments/flat7.jpeg",
-      price: 1000,
+      price: 35336308,
       beds: 7,
       baths: 7,
       area: 26204,
       title: "Apartments in DownTown",
-      type: "Sale"
+      type: "Apartment",
+      deal: "sale"
     },
     {
       id: 8,
       icon: "/img/apartments/flat8.jpeg",
-      price: 1000,
+      price: 35336308,
       beds: 7,
       baths: 7,
       area: 26204,
       title: "Apartments in DownTown",
-      type: "Sale"
+      type: "Apartment",
+      deal: "sale"
     }
   ]
 })
@@ -222,18 +227,17 @@ watch(() => route.query, () => {
     --container-width: 106.5rem;
   }
 
-  &__search-form {
-    width: max-content;
-  }
-
   &__header {
     padding-top: clamp(1rem, 0.299rem + 2.8758vw, 3.75rem);
     padding-bottom: clamp(1.5rem, 0.9902rem + 2.0915vw, 3.5rem);
     color: var(--color-white);
+    width: max-content;
   }
 
   &__title {
     margin-bottom: 1.75rem;
+    letter-spacing: 0.15rem;
+    font-weight: 600;
 
     @media (max-width: 47.9375rem) {
       margin-bottom: 1.25rem;

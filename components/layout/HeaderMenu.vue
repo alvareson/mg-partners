@@ -10,7 +10,7 @@
         <ul class="header-menu__list">
           <li class="header-menu__item" v-for="item in menu" :key="item.name">
             <AppLink :to="item.to" class="header-menu__link" @click="$emit('close-menu')">
-              {{ item.name }}
+              {{ displayTitle(item.name) }}
             </AppLink>
           </li>
         </ul>
@@ -43,6 +43,14 @@ const handleClickOutside = (event) => {
   if (menuRef.value && !menuRef.value.contains(event.target)) {
     emit('close-menu')
   }
+}
+
+const displayTitle = (title) => {
+  return title
+    .toLowerCase()
+    .split(' ')
+    .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ')
 }
 
 onMounted(() => {
@@ -146,7 +154,6 @@ useWatcher(open)
     display: block;
     padding-left: 1.5rem;
     padding-bottom: 1rem;
-    text-transform: uppercase;
     transition: color 0.3s;
     color: var(--color-quaternary);
     font-size: 1.4rem;
