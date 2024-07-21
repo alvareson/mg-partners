@@ -103,9 +103,17 @@
     &:nth-child(odd) {
       .about-us-page__text {
         order: 1;
+        background-color: var(--color-quaternary);
       }
       .about-us-page__image {
         order: 2;
+      }
+    }
+
+    &:nth-child(even) {
+      .about-us-page__text {
+        background-color: var(--color-white);
+        color: var(--color-quaternary);
       }
     }
   }
@@ -116,12 +124,13 @@
     color: var(--color-white);
 
     h2 {
-      font-size: 1.5rem;
+      font-size: 2.3rem;
       margin-bottom: 1rem;
+      font-weight: 400;
     }
 
     p {
-      font-size: 1rem;
+      font-size: 1.4rem;
     }
   }
 
