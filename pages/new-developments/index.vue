@@ -3,16 +3,17 @@
     <header class="developments__header">
       <div class="container">
         <h1 class="developments__title text-h2">NEW DEVELOPMENTS</h1>
-        <SearchForm class="developments__search-form" />
+        <div class="developments__search-bar">
+          <SearchForm :withFilters="false" class="developments__search-form" />
+          <div class="developments__filters">
+            <Icon name="search" width="38" height="30" />
+            <p class="developments__filter-title">Filters</p>
+          </div>
+        </div>
       </div>
     </header>
     <div class="developments__body">
       <div class="container">
-        <!-- <div v-if="developments?.data && developments?.data.length > 0" class="developments__cards">
-          <template v-for="property in developments.data" :key="developments.data.id">
-            <PropertyCard :property="property" :broker="findBrokerById(property.broker.id)" />
-          </template>
-        </div> -->
         <div v-if="developments && developments.length > 0" class="developments__cards">
           <template v-for="development in developments" :key="developments.id">
             <NewDevelopmentCard class="developments__card" :property="development" />
@@ -232,6 +233,7 @@ watch(() => route.query, () => {
     padding-top: clamp(1rem, 0.299rem + 2.8758vw, 3.75rem);
     padding-bottom: clamp(1.5rem, 0.9902rem + 2.0915vw, 3.5rem);
     color: var(--color-white);
+    width: max-content;
   }
 
   &__title {
@@ -352,6 +354,22 @@ watch(() => route.query, () => {
       color: inherit;
       pointer-events: none;
     }
+  }
+
+  &__search-bar {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__filters {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 1rem;
+  }
+
+  &__filter-title {
+    font-size: 1.2rem;
   }
 
   &__price {

@@ -178,9 +178,12 @@ onMounted(() => {
 
   &__footer {
     text-align: center;
-    font-size: 1.5rem;
-    color: var(--color-primary);
-    margin-top: 2rem;
+    font-size: 1.8rem;
+    color: var(--color-quaternary);
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    font-weight: 500;
+    letter-spacing: 0.4rem;
   }
 }
 

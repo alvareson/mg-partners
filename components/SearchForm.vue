@@ -9,7 +9,7 @@
 
       <div class="search-form__body">
         <div class="search-form__input">
-          <Icon class="search-form__icon" name="phone" />
+          <Icon class="search-form__icon" name="search" />
           <input
             type="text"
             class="search-form__input-field"
@@ -20,7 +20,7 @@
         <!-- <button type="button" class="search-form__filter-btn" @click="onToggleFilters">
           Filters
         </button> -->
-        <button type="button" class="search-form__filter-btn" @click="isFiltersOpen = true">
+        <button v-if="withFilters" type="button" class="search-form__filter-btn" @click="isFiltersOpen = true">
           Filters
         </button>
         <button type="button" class="search-form__search-btn" @click="onSearch">
@@ -43,6 +43,13 @@ import FiltersDialog from "@/components/FiltersDialog.vue"
 import { useRouter } from 'vue-router'
 import { vOnClickOutside } from "@vueuse/components"
 import { useWatcher } from "@/composables/watcher"
+
+const props = defineProps({
+  withFilters: {
+    type: Boolean,
+    default: true,
+  },
+})
 
 const router = useRouter()
 const isMobileSearchVisible = ref(false)

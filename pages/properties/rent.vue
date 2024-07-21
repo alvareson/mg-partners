@@ -3,7 +3,13 @@
     <header class="properties__header">
       <div class="container">
         <h1 class="properties__title">{{ pageTitle }}</h1>
-        <SearchForm class="properties__search-form" />
+        <div class="properties__search-bar">
+          <SearchForm :withFilters="false" class="properties__search-form" />
+          <div class="properties__filters">
+            <Icon name="search" width="38" height="30" />
+            <p class="properties__filter-title">Filters</p>
+          </div>
+        </div>
       </div>
     </header>
     <div class="properties__body">
@@ -420,6 +426,22 @@ watch(() => route.query, () => {
       padding-inline-end: 1.5rem;
       color: var(--color-quaternary);
     }
+  }
+
+  &__search-bar {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__filters {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 1rem;
+  }
+
+  &__filter-title {
+    font-size: 1.2rem;
   }
 
   &__submit {
