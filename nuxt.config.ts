@@ -21,10 +21,6 @@ export default defineNuxtConfig({
     },
   },
 
-  // routeRules: {
-  //   "/": { redirect: "/en" },
-  // },
-
   nitro: {
     prerender: {
       crawlLinks: true,

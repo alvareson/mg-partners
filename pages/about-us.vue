@@ -70,10 +70,10 @@ onMounted(() => {
     });
   }, {
     threshold: 0.1
-  });
+  })
 
   document.querySelectorAll('.about-us-page__section').forEach((section) => {
-    observer.observe(section);
+    observer.observe(section)
   })
 })
 </script>

@@ -63,9 +63,24 @@
 </template>
 
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
-import { onMounted, ref, watch, computed } from "vue"
+import { onMounted } from 'vue'
 
+onMounted(() => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible')
+        observer.unobserve(entry.target)
+      }
+    })
+  }, {
+    threshold: 0.1
+  })
+
+  document.querySelectorAll('.contact-us__header, .contact-us__body, .contact-us__form-section, .contact-us__info-section, .contact-us__image-section').forEach((section) => {
+    observer.observe(section)
+  })
+})
 </script>
 
 <style lang="scss">
@@ -79,6 +94,10 @@ import { onMounted, ref, watch, computed } from "vue"
     align-items: center;
     margin-bottom: 2rem;
     background: var(--color-white);
+
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
   }
 
   &__title {
@@ -99,6 +118,11 @@ import { onMounted, ref, watch, computed } from "vue"
     display: flex;
     justify-content: center;
     align-items: flex-start;
+
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    transition-delay: 0.5s;
   }
 
   &__container {
@@ -113,6 +137,11 @@ import { onMounted, ref, watch, computed } from "vue"
   &__info-section {
     padding: 2rem;
     color: var(--color-white);
+
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    transition-delay: 0.7s;
   }
 
   &__form-title,
@@ -187,11 +216,27 @@ import { onMounted, ref, watch, computed } from "vue"
   &__image-section {
     display: flex;
     justify-content: end;
+
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    transition-delay: 0.9s;
   }
 
   &__image-section img {
     max-width: 100%;
     height: auto;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    &__header.is-visible,
+    &__body.is-visible,
+    &__form-section.is-visible,
+    &__info-section.is-visible,
+    &__image-section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 </style>
