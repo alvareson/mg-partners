@@ -6,15 +6,15 @@
         <div class="new-development-card__title" v-if="property.title">
           {{ property.title }}
         </div>
+        <p class="new-development-card__price" v-if="property.price">
+          {{ displayPrice }}
+        </p>
         <ul class="new-development-card__data">
           <li class="new-development-card__data-item">{{ property.beds }} beds</li>
           <li class="new-development-card__data-item">{{ property.baths }} baths</li>
-          <li class="new-development-card__data-item">{{ property.area }} {{ measurement }}</li>
         </ul>
-        <p class="new-development-card__price" v-if="property.price">
-          ${{ property.price }}
-        </p>
       </div>
+      <button :to="`/properties/${property.id}`" class="new-development-card__button">View Details</button>
     </div>
   </AppLink>
 </template>
@@ -33,6 +33,10 @@ const props = defineProps({
 })
 
 const measurement = ref<MeasurementUnit>(MeasurementUnit.SquareFeet)
+
+const displayPrice = computed(() => {
+  return `${props.property.price.toLocaleString('en-US')} AED`
+})
 </script>
 
 <style lang="scss">
@@ -79,8 +83,8 @@ const measurement = ref<MeasurementUnit>(MeasurementUnit.SquareFeet)
 
 
   &__title {
-    font-size: 1.5rem;
-    font-weight: 900;
+    font-size: 1.9rem;
+    font-weight: 700;
   }
 
   &__data {
@@ -93,6 +97,7 @@ const measurement = ref<MeasurementUnit>(MeasurementUnit.SquareFeet)
   }
 
   &__data-item {
+    font-size: 1.4rem;
     &:not(:first-child) {
       &::before {
         content: "•";
@@ -102,8 +107,28 @@ const measurement = ref<MeasurementUnit>(MeasurementUnit.SquareFeet)
   }
 
   &__price {
-    font-size: 1.125rem;
+    font-size: 1.8rem;
     font-weight: 700;
+  }
+
+  &__button {
+    position: absolute;
+    bottom: 4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-white);
+    color: var(--color-quaternary);
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: var(--color-quaternary);
+      color: var(--color-white);
+    }
   }
 }
 </style>
