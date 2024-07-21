@@ -105,7 +105,6 @@ import { onMounted, ref, watch, computed } from "vue"
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 2rem;
-    max-width: 1200px;
     width: 100%;
     background: var(--color-quaternary);
   }
@@ -187,7 +186,7 @@ import { onMounted, ref, watch, computed } from "vue"
 
   &__image-section {
     display: flex;
-    justify-content: center;
+    justify-content: end;
   }
 
   &__image-section img {

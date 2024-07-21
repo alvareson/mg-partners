@@ -99,7 +99,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 100%;
-    max-width: 1200px;
 
     &:nth-child(odd) {
       .about-us-page__text {
@@ -131,8 +130,11 @@
     justify-content: center;
     
     img {
-      max-width: 100%;
+      width: 100%;
       height: auto;
+      max-width: 1000px;
+      max-height: 1000px;
+      object-fit: cover;
     }
   }
 
