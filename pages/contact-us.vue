@@ -41,16 +41,25 @@
         <div class="contact-us__info-section">
           <h2 class="contact-us__info-title">CONTACTS</h2>
           <address class="contact-us__info-content">
-            <p>Head Office & Retail</p>
+            <p class="contact-us__bold-text">Head Office & Retail</p>
             <p>Office 1203</p>
             <p>Arenco Tower, Dubai Media City, Dubai, United Arab Emirates.</p>
-            <p>Phone: +971 40 368 8080</p>
-            <p>Email: info@mgpartners.ae</p>
-            <div class="contact-us__social-media">
-              <a href="#">Facebook</a>
-              <a href="#">Instagram</a>
-              <a href="#">Twitter</a>
-              <a href="#">LinkedIn</a>
+            <div class="contact-us__phone">
+              <p class="contact-us__bold-text">Phone</p>
+              <p>+971 40 368 8080</p>
+            </div>
+            <div class="contact-us__email">
+              <p class="contact-us__bold-text">Email</p>
+              <p>info@mgpartners.ae</p>
+            </div>
+            <div class="contact-us__social">
+              <p class="contact-us__bold-text">Social media</p>
+              <div class="contact-us__social-media">
+                <Icon name="facebook" width="31" height="24" />
+                <Icon name="instagram" width="31" height="24" />
+                <Icon name="x" width="31" height="24" />
+                <Icon name="linkedin" width="31" height="24" />
+              </div>
             </div>
           </address>
         </div>
@@ -144,6 +153,14 @@ onMounted(() => {
     transition-delay: 0.7s;
   }
 
+  &__info-section {
+    padding-left: 8rem;
+  }
+
+  &__info-title {
+    padding-left: 1rem;
+  }
+
   &__form-title,
   &__info-title {
     font-size: 1.5rem;
@@ -151,8 +168,9 @@ onMounted(() => {
   }
 
   &__form-description {
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin-bottom: 2rem;
+    max-width: 26rem;
   }
 
   &__form {
@@ -168,18 +186,37 @@ onMounted(() => {
 
   &__form-group label {
     margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: var(--color-white);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
   }
 
   &__form-group input {
-    padding: 0.5rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
     font-size: 1rem;
-    border: 1px solid var(--color-secondary);
+    border: none;
+    border-bottom: 1px solid var(--color-secondary);
+    background: transparent;
+    color: var(--color-white);
   }
 
   &__form-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  &__bold-text {
+    font-weight: bold;
+    margin: 0.8rem 0;
+  }
+
+  &__phone,
+  &__email,
+  &__social {
+    margin-top: 2rem;
   }
 
   &__form-footer p {
@@ -195,22 +232,24 @@ onMounted(() => {
   }
 
   &__info-content {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   &__info-content p {
-    margin: 0.5rem 0;
+    margin: 0.2rem 0;
   }
 
   &__social-media {
     display: flex;
     gap: 1rem;
-    margin-top: 1rem;
   }
 
-  &__social-media a {
-    color: var(--color-white);
-    text-decoration: none;
+  // &__social {
+  //   padding-top: 0.2rem;
+  // }
+
+  &__social-media svg {
+    margin-top: 0.8rem;
   }
 
   &__image-section {
