@@ -4,14 +4,20 @@
       <svg class="contact-us-dialog__logo" width="80" height="80">
         <use xlink:href="/img/logos.svg#logo" />
       </svg>
-      <h2 class="contact-us-dialog__title text-h3">We Are Here to Help</h2>
+      <div class="contact-us-dialog__title-wrapper">
+        <h2 class="contact-us-dialog__title">We are here to help</h2>
+      </div>
       <button class="contact-us-dialog__close" type="button" aria-label="Close" @click="$emit('close')">
         <Icon name="close" width="32" height="32" />
       </button>
       <div class="contact-us-dialog__body">
         <div class="input">
-          <label class="input__label" for="contact-name">Your name</label>
-          <input class="input__field" id="contact-name" v-model="name" type="text" placeholder="Enter name here" required />
+          <label class="input__label" for="contact-name">Your first name</label>
+          <input class="input__field" id="contact-name" v-model="firstName" type="text" placeholder="Enter first name here" required />
+        </div>
+        <div class="input">
+          <label class="input__label" for="contact-name">Your last name</label>
+          <input class="input__field" id="contact-name" v-model="lastName" type="text" placeholder="Enter last name here" required />
         </div>
         <div class="input">
           <label class="input__label" for="contact-email">Email address</label>
@@ -19,7 +25,7 @@
         </div>
         <div class="input">
           <label class="input__label" for="contact-phone">Phone</label>
-          <input class="input__field" id="contact-phone" v-model="phone" type="tel" inputmode="tel" placeholder="Enter your phone number (optional)" />
+          <input class="input__field" id="contact-phone" v-model="phone" type="tel" inputmode="tel" placeholder="Enter your phone number (internation format)" />
         </div>
       </div>
       <footer class="contact-us-dialog__footer">
@@ -48,37 +54,13 @@ const emit = defineEmits(["close"])
 // const client = createDirectus(`${config.public.directusUrl}`).with(rest())
 
 const router = useRouter()
-const name = ref('')
+const firstName = ref('')
+const lastName = ref('')
 const email = ref('')
 const phone = ref('')
 const isLoading = ref(false)
 
-const handleSubmit = async () => {
-  isLoading.value = true
-  try {
-    const leadData = {
-      name: name.value,
-      email: email.value,
-      phone: phone.value
-    }
-
-    // await client.request(createItems('leads', leadData as any))
-    await fetch('/api/send-email', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(leadData),
-    })
-
-    emit('close')
-    router.push({ name: 'index___en' })
-  } catch (error) {
-    console.error('Lead submission failed:', error)
-  } finally {
-    isLoading.value = false
-  }
-}
+const handleSubmit = async () => {}
 </script>
 
 <style lang="scss">
@@ -94,6 +76,13 @@ const handleSubmit = async () => {
       max-width: 100%;
       max-height: 100%;
     }
+  }
+
+  &__title-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
   }
 
   &__inner {
@@ -118,12 +107,16 @@ const handleSubmit = async () => {
   &__title {
     margin-bottom: 2rem;
     line-height: 1.4;
+    color: var(--color-quaternary);
+    font-weight: 500;
+    font-size: 1.8rem;
   }
 
   &__close {
     position: absolute;
     top: 1.5rem;
     right: 1.5rem;
+    color: var(--color-quaternary);
   }
 
   &__body {
@@ -143,6 +136,7 @@ const handleSubmit = async () => {
     font-size: 0.75rem;
     line-height: 1.33;
     opacity: 0.5;
+    color: var(--color-quaternary);
 
     @media (max-width: 30rem) {
       position: absolute;
@@ -173,6 +167,7 @@ const handleSubmit = async () => {
     line-height: 1.33;
     text-transform: uppercase;
     letter-spacing: 0.15rem;
+    color: var(--color-quaternary);
 
     @media (max-width: 30rem) {
       margin-left: 1.625rem;
@@ -187,7 +182,7 @@ const handleSubmit = async () => {
         width: 2rem;
         height: 2rem;
         content: "";
-        border: 0.0625rem solid var(--color-primary);
+        border: 0.0625rem solid var(--color-quaternary);
         opacity: 0.2;
         transition: 0.3s;
         transition-property: transform, opacity;
@@ -204,6 +199,7 @@ const handleSubmit = async () => {
       grid-area: 1 / -1;
       transition: transform 0.3s;
       transform: translateX(-1.625rem);
+      color: var(--color-quaternary);
 
       .contact-us-dialog__submit:hover & {
         transform: translateX(-0.5rem);
@@ -222,6 +218,7 @@ const handleSubmit = async () => {
     text-transform: uppercase;
     letter-spacing: 0.15rem;
     cursor: pointer;
+    color: var(--color-quaternary);
   }
 
   &__field {
@@ -234,6 +231,7 @@ const handleSubmit = async () => {
     border: none;
     border-bottom: 0.0625rem solid rgba(var(--color-primary-rgb), var(--border-opacity));
     transition: border 0.25s;
+    color: var(--color-quaternary);
 
     &::placeholder {
       color: inherit;
