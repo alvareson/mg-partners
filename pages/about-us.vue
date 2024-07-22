@@ -95,13 +95,15 @@ onMounted(() => {
     font-size: 2rem;
     margin-bottom: 1rem;
     color: var(--color-quaternary);
+    font-weight: 500;
+    letter-spacing: 0.2rem;
   }
 
   &__subtitle {
     text-align: center;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: var(--color-quaternary);
-    width: 70rem;
+    width: 74rem;
     margin: 0 auto;
   }
 
@@ -138,6 +140,7 @@ onMounted(() => {
       .about-us-page__text {
         background-color: var(--color-white);
         color: var(--color-quaternary);
+        padding-top: 2rem;
         animation: slideInRight 3s forwards;
         animation-timeline: view();
         animation-range: 10px 600px;
@@ -157,17 +160,21 @@ onMounted(() => {
 
   &__text {
     background-color: var(--color-quaternary);
-    padding: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     color: var(--color-white);
 
     h2 {
       font-size: 2.3rem;
       margin-bottom: 1rem;
       font-weight: 400;
+      letter-spacing: 0.2rem;
     }
 
     p {
-      font-size: 1.4rem;
+      font-size: 1.43rem;
     }
   }
 
