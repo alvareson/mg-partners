@@ -32,8 +32,8 @@
       {{ location }}
       <Icon name="search" />
     </button>
+    <Dialog :component="FiltersDialog" :open="isFiltersOpen" @close="isFiltersOpen = false" />
   </form>
-  <Dialog :component="FiltersDialog" :open="isFiltersOpen" @close="isFiltersOpen = false" />
 </template>
 
 <script setup lang="ts">
