@@ -68,7 +68,7 @@ const displayPrice = computed(() => {
 
   &__content {
     position: absolute;
-    top: 14%;
+    top: 19%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: var(--color-white);
