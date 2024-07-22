@@ -267,6 +267,11 @@ onMounted(() => {
     height: auto;
   }
 
+  &__form-group input::placeholder {
+    color: var(--color-white);
+    opacity: .5;
+  }
+
   &__contact {
     display: flex;
     gap: 1.25rem;
