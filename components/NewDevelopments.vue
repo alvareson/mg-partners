@@ -5,7 +5,7 @@
         <h2 class="new-developments__title">New developments</h2>
         <div class="new-developments__arrows">
           <button class="new-developments__arrow" type="button" ref="prev" aria-label="Previous property">
-            <Icon name="chevron-left" />
+            <Icon name="chevron-left" :width="38" :height="38" :strokeWidth="1.1" style="margin-right: 4px;" />
           </button>
           <div class="new-developments__number">
             {{ activeSlide }}
@@ -13,7 +13,7 @@
             {{ totalSlides }}
           </div>
           <button class="new-developments__arrow" type="button" ref="next" aria-label="Next property">
-            <Icon name="chevron-right" />
+            <Icon name="chevron-right" :width="38" :height="38" :strokeWidth="1.1" style="margin-left: 4px;" />
           </button>
         </div>
       </header>
