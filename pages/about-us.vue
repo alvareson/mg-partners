@@ -115,11 +115,7 @@ onMounted(() => {
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 100%;
-    opacity: 0;
-    transform: translateY(-50px);
-    animation: fadeIn 3s linear forwards;
-    animation-timeline: view();
-    animation-range: 250px 500px;
+    opacity: 1;
 
     &:nth-child(even) {
       animation-delay: 1s;
@@ -129,11 +125,12 @@ onMounted(() => {
       .about-us-page__text {
         order: 1;
         background-color: var(--color-quaternary);
-        animation: slideInLeft 1s forwards;
+        animation: slideInLeft 3s forwards;
+        animation-timeline: view();
+        animation-range: 10px 600px;
       }
       .about-us-page__image {
         order: 2;
-        animation: slideInRight 1s forwards;
       }
     }
 
@@ -141,10 +138,19 @@ onMounted(() => {
       .about-us-page__text {
         background-color: var(--color-white);
         color: var(--color-quaternary);
-        animation: slideInRight 1s forwards;
+        animation: slideInRight 3s forwards;
+        animation-timeline: view();
+        animation-range: 10px 600px;
       }
       .about-us-page__image {
         animation: slideInLeft 1s forwards;
+      }
+    }
+
+    &:first-child {
+      .about-us-page__text,
+      .about-us-page__image {
+        animation: none;
       }
     }
   }
