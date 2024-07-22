@@ -193,6 +193,7 @@ const onSearch = () => {
     border: none;
     padding: 0.5rem 1rem;
     cursor: pointer;
+    font-size: 1.1rem;
   }
 
   &__toggle {

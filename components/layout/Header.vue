@@ -147,6 +147,10 @@ const onCloseMenu = () => {
     }
   }
 
+  &__toggle-icon {
+    color: var(--color-quaternary);
+  }
+
   &__contact {
     display: flex;
     gap: 1.25rem;

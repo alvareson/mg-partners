@@ -89,6 +89,7 @@ const handleSubmit = async () => {}
     position: relative;
     min-height: 100%;
     padding: 2.5rem;
+    background-color: var(--color-white);
 
     @media (max-width: 30rem) {
       padding: 0 1.5rem 6rem;

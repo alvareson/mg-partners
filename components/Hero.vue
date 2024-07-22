@@ -77,12 +77,12 @@ const selectOption = (option: string) => {
     button {
       background: none;
       border: none;
-      color: var(--color-secondary);
-      font-size: 1.25rem;
+      color: var(--color-white);
+      font-size: 1.15rem;
       cursor: pointer;
 
       &.active {
-        color: var(--color-white);
+        color: var(--color-quaternary);
       }
     }
   }
