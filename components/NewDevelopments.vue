@@ -165,7 +165,7 @@ const apartments = computed(() => {
   overflow: hidden;
   color: var(--color-white);
   background: var(--color-white);
-  margin-bottom: 8rem;
+  margin-bottom: 2rem;
 
   .container {
     position: relative;

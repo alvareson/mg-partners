@@ -40,7 +40,7 @@
           <Dialog :component="ContactUsDialog" :open="isContactUsOpen" @close="isContactUsOpen = false" />
         </section>
         <svg class="footer__logo" width="248" height="248">
-            <use xlink:href="/img/mgpartners.svg#mgpartners-logo" />
+            <use xlink:href="/img/mgwhite.svg#mgwhite-logo" />
         </svg>
       </div>
       <p class="footer__copyright">© MG & Partners {{ new Date().getFullYear() }}</p>
@@ -256,6 +256,7 @@ const toggleSection = (section: string) => {
 
   &__logo {
     margin-right: 4rem;
+    color: white;
   }
 
   &__copyright {
