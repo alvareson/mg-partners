@@ -1,10 +1,25 @@
 <template>
   <div ref="menuRef" class="header-menu" :class="{ 'header-menu--open': open }">
-    <header class="header-menu__header">
+    <div class="header-container">
       <button class="header-menu__close" type="button" @click="$emit('close-menu')">
-        <Icon :width="48" :height="48" class="header-menu__close-icon" name="close" />
+        <Icon :width="70" :height="70" class="header-menu__close-icon" name="close" />
       </button>
-    </header>
+      <div class="header-menu__logo-wrapper">
+        <AppLink :to="{ path: '/' }">
+          <svg class="header-menu__logo" width="140" height="140">
+            <use xlink:href="/img/mgpartners.svg#mgpartners-logo" />
+          </svg>
+        </AppLink>
+      </div>
+      <div class="header-menu__contact-wrapper">
+        <button class="header-menu__contact" type="button" @click="isContactUsOpen = true">
+          <span class="header-menu__contact-icon">
+            <Icon class="header-menu__contact-arrow" name="arrow-right" width="58" height="6" />
+          </span>
+          <p class="header-menu__contact-title">Contact us</p>
+        </button>
+      </div>
+    </div>
     <div class="header-menu__wrapper">
       <nav class="header-menu__nav">
         <ul class="header-menu__list">
@@ -71,7 +86,7 @@ useWatcher(open)
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 100;
+  z-index: 1001;
   display: flex;
   flex-direction: column;
   overflow: auto;
@@ -81,33 +96,120 @@ useWatcher(open)
   transform: translateY(-100%);
   height: max-content;
 
+  .header-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 0.75rem;
+    padding-bottom: 0rem;
+
+    @media (max-width: 56rem) {
+      padding-block: 0;
+    }
+  }
+
   &--open {
     transform: translateY(0);
   }
 
-  &__header {
+  &__logo-wrapper {
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    height: 4rem;
-    background: var(--color-white);
+    text-align: center;
+    flex: 1;
+    margin-left: 1rem;
   }
 
   &__logo {
-    display: grid;
-    place-content: center;
-    width: 4rem;
-    height: 4rem;
+    width: 100%;
+  }
 
-    svg {
-      width: 100%;
-      margin-top: 0.5rem;
+  &__contact-wrapper {
+    margin-right: 2rem;
+  }
+
+  &__contact {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+    margin-left: auto;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.33;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+
+    @media (max-width: 56rem) {
+      display: none;
+    }
+
+    .homepage & {
+      color: var(--color-quaternary);
+    }
+
+    &-icon {
+      display: grid;
+      place-items: center;
+
+      &::before,
+      &::after {
+        --color: var(--color-quaternary);
+        grid-area: 1 / -1;
+        width: var(--size);
+        height: var(--size);
+        content: "";
+        border: 0.0625rem solid var(--color-quaternary);
+        transition: 0.3s;
+        transition-property: transform, opacity;
+        transform: rotate(45deg);
+
+        .homepage & {
+          --color: var(--color-quaternary);
+        }
+      }
+
+      &::before {
+        --size: 3rem;
+        opacity: 0.2;
+
+        .header-menu__contact:hover & {
+          opacity: 0;
+          transform: rotate(-45deg);
+        }
+      }
+
+      &::after {
+        --size: 2rem;
+
+        .header-menu__contact:hover & {
+          opacity: 0;
+          transform: rotate(135deg);
+        }
+      }
+    }
+
+    &-arrow {
+      grid-area: 1 / -1;
+      transition: transform 0.3s;
+      transform: translateX(-1.625rem);
+      color: var(--color-quaternary);
+
+      .header-menu__contact:hover & {
+        transform: translateX(0);
+      }
+    }
+
+    &-title {
+      color: var(--color-quaternary);
     }
   }
 
   &__close {
-    display: grid;
-    place-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: start;
     font-family: var(--font-family-alt);
     font-size: 1rem;
     text-transform: uppercase;
@@ -118,8 +220,7 @@ useWatcher(open)
     cursor: pointer;
 
     .header-menu__close-icon {
-      margin-left: 2rem;
-      margin-top: 3rem;
+      margin-left: 1.5rem;
     }
   }
 
@@ -134,7 +235,9 @@ useWatcher(open)
   &__nav {
     align-self: center;
     width: 100%;
-    padding: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
   }
 
   &__list {
@@ -160,24 +263,7 @@ useWatcher(open)
     font-weight: 400;
     line-height: 1.6rem;
 
-    &::after {
-      position: absolute;
-      inset-inline-start: 0;
-      bottom: 0.3625rem;
-      width: 0;
-      height: 0.0625rem;
-      content: "";
-      background: var(--color-quaternary);
-      transition: width 0.3s;
-    }
-
-    &:hover {
-      color: var(--color-quaternary);
-
-      &::after {
-        width: 100%;
-      }
-    }
+  
   }
 
   &__contacts {

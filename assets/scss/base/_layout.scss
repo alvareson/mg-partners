@@ -10,6 +10,16 @@
   }
 }
 
+.header-container {
+  --container-width: 124rem;
+  --padding-inline: 2rem;
+  max-width: calc(var(--container-width) + var(--padding-inline) * 2);
+
+  @media (max-width: 63.9375rem) {
+    --padding-inline: 1.5rem;
+  }
+}
+
 .footer-container {
   --container-width: 124rem;
   --padding-inline: 2rem;
