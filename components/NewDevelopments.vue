@@ -81,7 +81,7 @@ const apartments = computed(() => {
       beds: 7,
       baths: 7,
       area: 26204,
-      title: "Apartments in DownTown",
+      title: "Apartments in Downtown",
 			type: "Sale"
     },
     {
@@ -91,7 +91,7 @@ const apartments = computed(() => {
       beds: 7,
       baths: 7,
       area: 26204,
-      title: "Apartments in DownTown",
+      title: "Apartments in Downtown",
 			type: "Sale"
     },
     {
@@ -101,7 +101,7 @@ const apartments = computed(() => {
       beds: 7,
       baths: 7,
       area: 26204,
-      title: "Apartments in DownTown",
+      title: "Apartments in Downtown",
 			type: "Sale"
     },
     {
@@ -111,7 +111,7 @@ const apartments = computed(() => {
       beds: 7,
       baths: 7,
       area: 26204,
-      title: "Apartments in DownTown",
+      title: "Apartments in Downtown",
 			type: "Sale"
     },
     {
@@ -121,7 +121,7 @@ const apartments = computed(() => {
       beds: 7,
       baths: 7,
       area: 26204,
-      title: "Apartments in DownTown",
+      title: "Apartments in Downtown",
 			type: "Sale"
     },
     {
@@ -131,7 +131,7 @@ const apartments = computed(() => {
       beds: 7,
       baths: 7,
       area: 26204,
-      title: "Apartments in DownTown",
+      title: "Apartments in Downtown",
 			type: "Sale"
     },
     {
@@ -141,7 +141,7 @@ const apartments = computed(() => {
       beds: 7,
       baths: 7,
       area: 26204,
-      title: "Apartments in DownTown",
+      title: "Apartments in Downtown",
 			type: "Sale"
     },
     {
@@ -151,7 +151,7 @@ const apartments = computed(() => {
       beds: 7,
       baths: 7,
       area: 26204,
-      title: "Apartments in DownTown",
+      title: "Apartments in Downtown",
 			type: "Sale"
     }
   ]
@@ -165,6 +165,7 @@ const apartments = computed(() => {
   overflow: hidden;
   color: var(--color-white);
   background: var(--color-white);
+  margin-bottom: 8rem;
 
   .container {
     position: relative;
@@ -268,7 +269,8 @@ const apartments = computed(() => {
   }
 
   &__slide {
-    max-width: 72rem;
+    max-width: 714px;
+    max-height: 384px;
 
     @media (max-width: 34rem) {
       width: 12.5rem;
@@ -292,14 +294,8 @@ const apartments = computed(() => {
   }
 
   &__card {
-    width: 84rem;
-    min-height: 40rem;
-
-    @media (max-width: 34rem) {
-      width: 84rem;
-      height: auto;
-    }
-
+    height: 100%;
+    
     .property-card__img {
       @media (max-width: 34rem) {
         aspect-ratio: 1 / 1.24;

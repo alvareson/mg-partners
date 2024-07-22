@@ -88,7 +88,7 @@ const social = [
   z-index: 100;
   padding-inline: 1.5rem;
   overflow: auto;
-  color: var(--color-tertiary);
+  color: var(--color-white);
   background: var(--color-primary);
   transition: transform 0.4s ease-in-out;
   transform: translateY(-100%);

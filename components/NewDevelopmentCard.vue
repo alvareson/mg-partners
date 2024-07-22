@@ -1,7 +1,7 @@
 <template>
   <AppLink class="new-development-card" :to="`/properties/${property.id}`">
     <div class="new-development-card__image-container">
-      <img class="new-development-card__img" v-if="property.icon" :src="property.icon" alt="" />
+      <img class="new-development__card-img" v-if="property.icon" :src="property.icon" alt="" />
       <div class="new-development-card__content">
         <div class="new-development-card__title" v-if="property.title">
           {{ property.title }}
@@ -47,7 +47,6 @@ const displayPrice = computed(() => {
   transition: border 0.25s;
   background-color: var(--color-quaternary);
   max-width: 70rem;
-  height: 10rem;
   overflow: hidden;
 
   &:hover {
@@ -58,6 +57,7 @@ const displayPrice = computed(() => {
     position: relative;
     width: 100%;
     height: 100%;
+    object-fit: cover;
   }
 
   &__img {
@@ -68,13 +68,13 @@ const displayPrice = computed(() => {
 
   &__content {
     position: absolute;
+    width: max-content;
     top: 19%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: var(--color-white);
     text-align: center;
     padding: 1rem;
-    width: max-content;
   }
 
   &__type, &__title, &__data, &__price {
@@ -113,7 +113,7 @@ const displayPrice = computed(() => {
 
   &__button {
     position: absolute;
-    bottom: 4rem;
+    bottom: 18%;
     left: 50%;
     transform: translateX(-50%);
     background-color: var(--color-white);

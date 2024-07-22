@@ -76,7 +76,7 @@ watch(open, value => {
     max-width: calc(100vw - 2rem);
     max-height: calc(100vh - 2rem);
     margin: auto;
-    background: var(--color-tertiary);
+    background: var(--color-white);
   }
 }
 
@@ -96,7 +96,7 @@ watch(open, value => {
   max-height: 100vh;
   overflow: auto;
   z-index: 1002;
-  background: var(--color-tertiary);
+  background: var(--color-white);
   transition: transform 0.3s ease;
 }
 
@@ -106,7 +106,7 @@ watch(open, value => {
   max-width: 100%;
   max-height: 100%;
   margin: auto;
-  background: var(--color-tertiary);
+  background: var(--color-white);
 }
 
 .fade-enter-active, .fade-leave-active {

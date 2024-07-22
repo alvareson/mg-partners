@@ -24,7 +24,7 @@ const isContactUsOpen = ref(false)
   display: grid;
   place-items: center;
   height: 23rem;
-  color: var(--color-tertiary);
+  color: var(--color-white);
   text-align: center;
   background: #3e484b url("/img/contact-us.webp") no-repeat 50% 0 / cover;
 

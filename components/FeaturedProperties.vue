@@ -31,7 +31,7 @@
           @slide-change="onSlideChange"
         >
 					<SwiperSlide class="featured-properties__slide" v-for="(apartment, index) in apartments" :key="index">
-            <PropertyCard class="featured-properties__card" :property="apartment" />
+            <PropertyCard :home-page-view="true" class="featured-properties__card" :property="apartment" />
           </SwiperSlide>
         </Swiper>
       </div>
@@ -76,82 +76,90 @@ const apartments = computed(() => {
     {
       id: 1,
       icon: "/img/apartments/flat1.jpeg",
-      price: 1000,
+      price: 3200308,
       beds: 7,
       baths: 7,
       area: 26204,
-      title: "Apartments in DownTown",
-			type: "Sale"
+      title: "Apartments in Downtown",
+			type: "Sale",
+      deal: "sale"
     },
     {
       id: 2,
       icon: "/img/apartments/flat2.jpeg",
-      price: 1000,
+      price: 3200308,
       beds: 7,
       baths: 7,
       area: 26204,
-      title: "Apartments in DownTown",
-			type: "Sale"
+      title: "Apartments in Downtown",
+			type: "Sale",
+      deal: "sale"
     },
     {
       id: 3,
       icon: "/img/apartments/flat3.jpeg",
-      price: 1000,
+      price: 3200308,
       beds: 7,
       baths: 7,
       area: 26204,
-      title: "Apartments in DownTown",
-			type: "Sale"
+      title: "Apartments in Downtown",
+			type: "Sale",
+      deal: "sale"
     },
     {
       id: 4,
       icon: "/img/apartments/flat4.jpeg",
-      price: 1000,
+      price: 3200308,
       beds: 7,
       baths: 7,
       area: 26204,
-      title: "Apartments in DownTown",
-			type: "Sale"
+      title: "Apartments in Downtown",
+			type: "Sale",
+      deal: "sale"
     },
     {
       id: 5,
       icon: "/img/apartments/flat5.jpeg",
-      price: 1000,
+      price: 3200308,
       beds: 7,
       baths: 7,
       area: 26204,
-      title: "Apartments in DownTown",
-			type: "Sale"
+      title: "Apartments in Downtown",
+			type: "Sale",
+      deal: "sale"
     },
     {
       id: 6,
       icon: "/img/apartments/flat6.jpeg",
-      price: 1000,
+      price: 3200308,
       beds: 7,
       baths: 7,
       area: 26204,
-      title: "Apartments in DownTown",
-			type: "Sale"
+      title: "Apartments in Downtown",
+			type: "Sale",
+      deal: "sale"
     },
     {
       id: 7,
       icon: "/img/apartments/flat7.jpeg",
-      price: 1000,
+      price: 3200308,
       beds: 7,
       baths: 7,
       area: 26204,
-      title: "Apartments in DownTown",
-			type: "Sale"
+      title: "Apartments in Downtown",
+			type: "Sale",
+      deal: "sale"
     },
     {
       id: 8,
       icon: "/img/apartments/flat8.jpeg",
-      price: 1000,
+      price: 3200308,
       beds: 7,
       baths: 7,
       area: 26204,
-      title: "Apartments in DownTown",
-			type: "Sale"
+      title: "Apartments in Downtown",
+			type: "Sale",
+      deal: "sale"
     }
   ]
 })
@@ -160,7 +168,7 @@ const apartments = computed(() => {
 <style lang="scss">
 .featured-properties {
   padding-block: clamp(5rem, 1.7255rem + 1.2288vw, 3rem);
-	padding-top: 1rem;
+	padding-top: 3rem;
   overflow: hidden;
   color: var(--color-white);
   background: var(--color-white);
@@ -267,7 +275,7 @@ const apartments = computed(() => {
   }
 
   &__slide {
-    max-width: 32rem;
+    max-width: 26rem;
     height: auto;
 
     @media (max-width: 34rem) {

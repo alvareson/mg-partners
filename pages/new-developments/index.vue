@@ -464,7 +464,7 @@ watch(() => route.query, () => {
     padding-top: clamp(1rem, 0.3627rem + 2.6144vw, 3.5rem);
     padding-bottom: clamp(2.5rem, 2.2451rem + 1.0458vw, 3.5rem);
     color: var(--color-primary);
-    background: var(--color-tertiary);
+    background: var(--color-white);
   }
 
   &__pagination {

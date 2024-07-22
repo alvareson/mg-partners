@@ -95,7 +95,7 @@ const toggleSection = (section: string) => {
   padding-block: 2rem 1.5rem;
   font-size: 0.875rem;
   line-height: 1.71;
-  color: var(--color-tertiary);
+  color: var(--color-white);
   background: var(--color-quaternary) url('/img/footerBackground.png') no-repeat center/cover;
 
   @media (max-width: 47.9375rem) {
@@ -267,7 +267,7 @@ const toggleSection = (section: string) => {
   .contact-us-footer {
     display: grid;
     place-items: center;
-    color: var(--color-tertiary);
+    color: var(--color-white);
     text-align: center;
 
     &__container {
