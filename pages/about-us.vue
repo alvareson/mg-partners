@@ -117,7 +117,9 @@ onMounted(() => {
     width: 100%;
     opacity: 0;
     transform: translateY(-50px);
-    animation: fadeIn 3s forwards;
+    animation: fadeIn 3s linear forwards;
+    animation-timeline: view();
+    animation-range: 250px 500px;
 
     &:nth-child(even) {
       animation-delay: 1s;
