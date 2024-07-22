@@ -2,7 +2,7 @@
   <div class="developments">
     <header class="developments__header">
       <div class="container">
-        <h1 class="developments__title text-h2">NEW DEVELOPMENTS</h1>
+        <h1 class="developments__title text-h3">NEW DEVELOPMENTS</h1>
         <div class="developments__search-bar">
           <SearchForm :withFilters="false" class="developments__search-form" />
           <div class="developments__filters" @click="isFiltersOpen = true">
@@ -242,6 +242,7 @@ watch(() => route.query, () => {
 
   &__title {
     margin-bottom: 1.75rem;
+    letter-spacing: 0.2rem;
 
     @media (max-width: 47.9375rem) {
       margin-bottom: 1.25rem;

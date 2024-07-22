@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation } from 'swiper/modules'
 import 'swiper/css'
@@ -65,7 +65,7 @@ const onSwiper = swiper => {
   // } else {
   //   swiper.changeLanguageDirection("ltr")
   // }
-  
+  swiper.changeLanguageDirection("ltr")
   getActiveSlideNumber(swiper)
   totalSlides.value = swiper.slides.length
 }
@@ -155,6 +155,21 @@ const apartments = computed(() => {
 			type: "Sale"
     }
   ]
+})
+
+onMounted(() => {
+  const swiperElement = document.querySelector('.new-developments__swiper')
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        swiperElement.classList.add('in-view')
+        observer.unobserve(entry.target)
+      }
+    })
+  }, {
+    threshold: 0.1
+  })
+  observer.observe(swiperElement)
 })
 </script>
 
@@ -264,11 +279,16 @@ const apartments = computed(() => {
     overflow: visible;
     opacity: 0;
     transform: translateY(-50px);
-    animation: fadeIn 4s forwards;
+    transition: opacity 4s, transform 4s;
 
     @media (max-width: 75rem) {
       padding-bottom: 5.5rem;
     }
+  }
+
+  &__swiper.in-view {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   &__slide {
