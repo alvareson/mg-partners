@@ -30,7 +30,7 @@
         </nav>
         <section class="contact-us-footer">
           <div class="contact-us-footer__container">
-            <h2 class="contact-us-footer__title text-h2">Schedule Your Private Consultation</h2>
+            <h2 class="contact-us-footer__title text-h2">Schedule your private consultation</h2>
             <button class="contact-us-footer__btn" type="button" @click="isContactUsOpen = true">
               <span class="contact-us-footer__icon">
                 <Icon class="contact-us-footer__phone" name="phone" width="32" height="32" />
@@ -263,77 +263,76 @@ const toggleSection = (section: string) => {
       text-align: center;
     }
   }
+}
+.contact-us-footer {
+  display: grid;
+  place-items: center;
+  color: var(--color-white);
+  text-align: center;
 
-  .contact-us-footer {
+  &__container {
+    display: grid;
+    gap: 1rem;
+    place-items: center;
+  }
+
+  &__title {
+    line-height: 1.5;
+    font-size: 1.6rem;
+  }
+
+  &__btn {
+    display: grid;
+    gap: 1.625rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.14;
+    text-transform: uppercase;
+    letter-spacing: 0.175rem;
+  }
+
+  &__icon {
     display: grid;
     place-items: center;
-    color: var(--color-white);
-    text-align: center;
+    width: 7rem;
+    height: 7rem;
 
-    &__container {
-      display: grid;
-      gap: 1rem;
-      place-items: center;
-    }
-
-    &__title {
-      line-height: 1.5;
-      font-size: 1.6rem;
-    }
-
-    &__btn {
-      display: grid;
-      gap: 1.625rem;
-      font-size: 0.875rem;
-      font-weight: 600;
-      line-height: 1.14;
-      text-transform: uppercase;
-      letter-spacing: 0.175rem;
-    }
-
-    &__icon {
-      display: grid;
-      place-items: center;
-      width: 7rem;
-      height: 7rem;
-
-      &::before,
-      &::after {
-        grid-area: 1 / -1;
-        width: var(--size);
-        height: var(--size);
-        content: "";
-        border: 0.0625rem solid var(--color-white);
-        transform: rotate(45deg);
-      }
-
-      &::before {
-        --size: 5rem;
-        opacity: 0.2;
-        transition: transform 0.3s;
-
-        .contact-us__btn:hover & {
-          transform: rotate(-45deg);
-        }
-      }
-
-      &::after {
-        --size: 3.5rem;
-        transition: transform 0.3s;
-
-        .contact-us__btn:hover & {
-          transform: rotate(135deg);
-        }
-      }
-    }
-
-    &__phone {
+    &::before,
+    &::after {
       grid-area: 1 / -1;
+      width: var(--size);
+      height: var(--size);
+      content: "";
+      border: 0.0625rem solid var(--color-white);
+      transform: rotate(45deg);
+    }
+
+    &::before {
+      --size: 5rem;
+      opacity: 0.2;
       transition: transform 0.3s;
 
-      .contact-us__btn:hover & {
-        transform: scale(1.3);
+      .contact-us-footer__btn:hover & {
+        transform: rotate(-45deg);
       }
+    }
+
+    &::after {
+      --size: 3.5rem;
+      transition: transform 0.3s;
+
+      .contact-us-footer__btn:hover & {
+        transform: rotate(135deg);
+      }
+    }
+  }
+
+  &__phone {
+    grid-area: 1 / -1;
+    transition: transform 0.3s;
+
+    .contact-us-footer__btn:hover & {
+      transform: scale(1.3);
     }
   }
 }
