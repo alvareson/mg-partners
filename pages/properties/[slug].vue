@@ -168,11 +168,11 @@ const viewAllFeatures = () => featuresRef?.value?.classList.add("property__featu
 const config = useRuntimeConfig()
 const localMap = computed(() => {
   return mapboxUrlHandler(
-    "https://api.mapbox.com/styles/v1/mapbox/{style}/static/pin-l+3584e4({lat},{lng})/{lat},{lng},{zoom},0/{size}?access_token=pk.eyJ1Ijoid2lsbHlzYWRyYWNrIiwiYSI6ImNsdDVqOXNoMTAxam4ybG1tZGlzeWczcmYifQ.xhqpVz5s22U7snbESo7rlw",
+    "https://api.mapbox.com/styles/v1/mapbox/{style}/static/pin-l+3584e4({lat},{lng})/{lat},{lng},{zoom},0/{size}?access_token={token}",
     {
       lng: property.value?.location?.lng,
       lat: property.value?.location?.lat,
-      token: config.public.mapboxAccessToken,
+      token: "pk.eyJ1Ijoid2lsbHlzYWRyYWNrIiwiYSI6ImNsdDVqOXNoMTAxam4ybG1tZGlzeWczcmYifQ.xhqpVz5s22U7snbESo7rlw",
       size: "800x600",
       style: "streets-v12",
       zoom: 16,
