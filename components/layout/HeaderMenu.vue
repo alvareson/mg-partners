@@ -1,42 +1,48 @@
 <template>
-  <div ref="menuRef" class="header-menu" :class="{ 'header-menu--open': open }">
-    <div class="header-container">
-      <button class="header-menu__close" type="button" @click="$emit('close-menu')">
-        <Icon :width="70" :height="70" class="header-menu__close-icon" name="close" />
-      </button>
-      <div class="header-menu__logo-wrapper">
-        <AppLink :to="{ path: '/' }">
-          <svg class="header-menu__logo" width="140" height="140">
-            <use xlink:href="/img/mgpartners.svg#mgpartners-logo" />
-          </svg>
-        </AppLink>
-      </div>
-      <div class="header-menu__contact-wrapper">
-        <button class="header-menu__contact" type="button" @click="isContactUsOpen = true">
-          <span class="header-menu__contact-icon">
-            <Icon class="header-menu__contact-arrow" name="arrow-right" width="58" height="6" />
-          </span>
-          <p class="header-menu__contact-title">Contact us</p>
+  <Teleport to="body">
+    <Transition name="fade">
+      <div v-if="open" class="header-menu-overlay" @click="$emit('close-menu')"></div>
+    </Transition>
+    <div ref="menuRef" class="header-menu" :class="{ 'header-menu--open': open }">
+      <div class="header-container">
+        <button class="header-menu__close" type="button" @click="$emit('close-menu')">
+          <Icon :width="70" :height="70" class="header-menu__close-icon" name="close" />
         </button>
+        <div class="header-menu__logo-wrapper">
+          <AppLink :to="{ path: '/' }" @click="$emit('close-menu')">
+            <svg class="header-menu__logo" width="140" height="140">
+              <use xlink:href="/img/mgpartners.svg#mgpartners-logo" />
+            </svg>
+          </AppLink>
+        </div>
+        <div class="header-menu__contact-wrapper">
+          <button class="header-menu__contact" type="button" @click="openContactUs">
+            <span class="header-menu__contact-icon">
+              <Icon class="header-menu__contact-arrow" name="arrow-right" width="58" height="6" />
+            </span>
+            <p class="header-menu__contact-title">Contact us</p>
+          </button>
+        </div>
+      </div>
+      <div class="header-menu__wrapper">
+        <nav class="header-menu__nav">
+          <ul class="header-menu__list">
+            <li class="header-menu__item" v-for="item in menu" :key="item.name">
+              <AppLink :to="item.to" class="header-menu__link" @click="$emit('close-menu')">
+                {{ displayTitle(item.name) }}
+              </AppLink>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
-    <div class="header-menu__wrapper">
-      <nav class="header-menu__nav">
-        <ul class="header-menu__list">
-          <li class="header-menu__item" v-for="item in menu" :key="item.name">
-            <AppLink :to="item.to" class="header-menu__link" @click="$emit('close-menu')">
-              {{ displayTitle(item.name) }}
-            </AppLink>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div>
+    <Dialog :component="ContactUsDialog" :open="isContactUsOpen" @close="isContactUsOpen = false" />
+  </Teleport>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, toRef } from 'vue'
-import { useWatcher } from "@/composables/watcher"
+import ContactUsDialog from "@/components/ContactUsDialog.vue"
 
 const props = defineProps({
   menu: {
@@ -53,6 +59,12 @@ const emit = defineEmits(['close-menu'])
 
 const open = toRef(props, "open")
 const menuRef = ref(null)
+const isContactUsOpen = ref(false)
+
+const openContactUs = () => {
+  isContactUsOpen.value = true
+  emit('close-menu')
+}
 
 const handleClickOutside = (event) => {
   if (menuRef.value && !menuRef.value.contains(event.target)) {
@@ -75,8 +87,6 @@ onMounted(() => {
 onUnmounted(() => {
   document.removeEventListener('click', handleClickOutside)
 })
-
-useWatcher(open)
 </script>
 
 <style lang="scss">
@@ -86,7 +96,7 @@ useWatcher(open)
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1001;
+  z-index: 1002;
   display: flex;
   flex-direction: column;
   overflow: auto;
@@ -119,7 +129,6 @@ useWatcher(open)
     align-items: center;
     text-align: center;
     flex: 1;
-    margin-left: 1rem;
   }
 
   &__logo {
@@ -262,8 +271,6 @@ useWatcher(open)
     font-size: 1.4rem;
     font-weight: 400;
     line-height: 1.6rem;
-
-  
   }
 
   &__contacts {
@@ -299,5 +306,23 @@ useWatcher(open)
     display: flex;
     gap: 0.5rem;
   }
+}
+
+.header-menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1001;
+  background: rgba(var(--color-quaternary-rgb), 0.5);
+  transition: opacity 0.3s;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
