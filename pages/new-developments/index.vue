@@ -5,7 +5,7 @@
         <h1 class="developments__title text-h2">NEW DEVELOPMENTS</h1>
         <div class="developments__search-bar">
           <SearchForm :withFilters="false" class="developments__search-form" />
-          <div class="developments__filters">
+          <div class="developments__filters" @click="isFiltersOpen = true">
             <Icon name="search" width="38" height="30" />
             <p class="developments__filter-title">Filters</p>
           </div>
@@ -22,6 +22,7 @@
         <!-- <Pagination :total="developments?.total" :page-size="pageSize" :page="currentPage" @update:page="changePage" class="developments__pagination" /> -->
       </div>
     </div>
+    <Dialog :component="FiltersDialog" :open="isFiltersOpen" @close="isFiltersOpen = false" />
   </div>
 </template>
 
@@ -31,11 +32,14 @@ import { onMounted, ref, watch, computed } from "vue"
 // import { getBrokers } from "~/data/developments/api"
 import { PropertyTypes } from "~/utils/types"
 import { useWatcher } from "@/composables/watcher"
+import FiltersDialog from "@/components/FiltersDialog.vue"
 
 const pageTitle = computed(() => {
   const dealType = route.params.dealType
   return dealType === 'sale' ? 'developments FOR SALE' : 'developments FOR RENT'
 })
+
+const isFiltersOpen = ref(false)
 
 const filters = ref({
   dealType: '',
@@ -366,6 +370,7 @@ watch(() => route.query, () => {
     flex-direction: row;
     align-items: center;
     padding-left: 1rem;
+    cursor: pointer;
   }
 
   &__filter-title {

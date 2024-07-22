@@ -5,7 +5,7 @@
         <h1 class="properties__title">{{ pageTitle }}</h1>
         <div class="properties__search-bar">
           <SearchForm :withFilters="false" class="properties__search-form" />
-          <div class="properties__filters">
+          <div class="properties__filters" @click="isFiltersOpen = true">
             <Icon name="search" width="38" height="30" />
             <p class="properties__filter-title">Filters</p>
           </div>
@@ -27,6 +27,7 @@
         <!-- <Pagination :total="properties?.total" :page-size="pageSize" :page="currentPage" @update:page="changePage" class="properties__pagination" /> -->
       </div>
     </div>
+    <Dialog :component="FiltersDialog" :open="isFiltersOpen" @close="isFiltersOpen = false" />
   </div>
 </template>
 
@@ -36,8 +37,10 @@ import { onMounted, ref, watch, computed } from "vue"
 import { getBrokers } from "~/data/properties/api"
 import { PropertyTypes } from "~/utils/types"
 import { useWatcher } from "@/composables/watcher"
+import FiltersDialog from "@/components/FiltersDialog.vue"
 
 const pageTitle = ref("PROPERTIES FOR RENT")
+const isFiltersOpen = ref(false)
 
 const filters = ref({
   dealType: '',
@@ -438,6 +441,7 @@ watch(() => route.query, () => {
     flex-direction: row;
     align-items: center;
     padding-left: 1rem;
+    cursor: pointer;
   }
 
   &__filter-title {
