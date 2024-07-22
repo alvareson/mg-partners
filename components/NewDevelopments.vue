@@ -262,6 +262,9 @@ const apartments = computed(() => {
 
   &__swiper {
     overflow: visible;
+    opacity: 0;
+    transform: translateY(-50px);
+    animation: fadeIn 4s forwards;
 
     @media (max-width: 75rem) {
       padding-bottom: 5.5rem;
@@ -307,6 +310,12 @@ const apartments = computed(() => {
         display: none;
       }
     }
+  }
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 </style>
