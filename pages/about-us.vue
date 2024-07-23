@@ -59,22 +59,37 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
+
+let observer: IntersectionObserver | null = null
 
 onMounted(() => {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible')
-      }
-    });
-  }, {
-    threshold: 0.1
-  })
+  const options = {
+    root: null,
+    rootMargin: '-20% 0px',
+    threshold: 0
+  }
 
-  document.querySelectorAll('.about-us-page__section').forEach((section) => {
-    observer.observe(section)
+  observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('slide-in')
+      } else {
+        entry.target.classList.remove('slide-in')
+      }
+    })
+  }, options)
+
+  document.querySelectorAll('.about-us-page__text').forEach((section, index) => {
+    section.classList.add(index % 2 === 0 ? 'odd' : 'even')
+    observer!.observe(section)
   })
+})
+
+onUnmounted(() => {
+  if (observer) {
+    observer.disconnect()
+  }
 })
 </script>
 
@@ -127,9 +142,6 @@ onMounted(() => {
       .about-us-page__text {
         order: 1;
         background-color: var(--color-quaternary);
-        animation: slideInLeft 3s forwards;
-        animation-timeline: view();
-        animation-range: 10px 600px;
       }
       .about-us-page__image {
         order: 2;
@@ -141,9 +153,6 @@ onMounted(() => {
         background-color: var(--color-white);
         color: var(--color-quaternary);
         padding-top: 2rem;
-        animation: slideInRight 3s forwards;
-        animation-timeline: view();
-        animation-range: 10px 600px;
       }
       .about-us-page__image {
         animation: slideInLeft 1s forwards;
@@ -165,6 +174,22 @@ onMounted(() => {
     padding-top: 2rem;
     padding-bottom: 2rem;
     color: var(--color-white);
+    opacity: 0;
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+    will-change: transform, opacity;
+
+    &.odd {
+      transform: translateX(-100%);
+    }
+
+    &.even {
+      transform: translateX(100%);
+    }
+
+    &.slide-in {
+      transform: translateX(0);
+      opacity: 1;
+    }
 
     h2 {
       font-size: 2.3rem;
@@ -199,36 +224,6 @@ onMounted(() => {
     margin-bottom: 4rem;
     font-weight: 500;
     letter-spacing: 0.4rem;
-  }
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
   }
 }
 </style>
