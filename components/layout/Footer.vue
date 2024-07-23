@@ -39,9 +39,7 @@
           </div>
           <Dialog :component="ContactUsDialog" :open="isContactUsOpen" @close="isContactUsOpen = false" />
         </section>
-        <svg class="footer__logo" width="248" height="248">
-            <use xlink:href="/img/mgwhite.svg#mgwhite-logo" />
-        </svg>
+        <img class="footer__logo" src="/img/mgpartnerswhite.png" alt="MG & Partners Logo" width="248" height="248" />
       </div>
       <p class="footer__copyright">© MG & Partners {{ new Date().getFullYear() }}</p>
     </div>
