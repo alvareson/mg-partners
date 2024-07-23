@@ -238,7 +238,6 @@ onUnmounted(() => {
     flex-direction: column;
     flex: 1;
     padding: 1rem;
-    overflow-y: auto;
   }
 
   &__nav {
